@@ -81,19 +81,17 @@ export function Section3() {
             >
               {isEven ? (
                 <>
-                  <div className="flex-1 flex items-start flex-col">
+                  <div className="flex-1 flex flex-col items-start order-2 lg:order-1">
                     <h1 className="text-5xl font-bold text-gray-800 mb-6">
                       {item.title.split(" ")[0]}{" "}
-                      <span className={item.color}>
-                        {item.title.split(" ")[1]}
-                      </span>
+                      <span className={item.color}>{item.title.split(" ")[1]}</span>
                     </h1>
                     <p className="text-gray-600 leading-relaxed text-2xl text-left">
                       {item.description}
                     </p>
                   </div>
                   <motion.div
-                    className="flex-1"
+                    className="flex-1 order-1 lg:order-2"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   >
@@ -107,7 +105,7 @@ export function Section3() {
               ) : (
                 <>
                   <motion.div
-                    className="flex-1"
+                    className="flex-1 order-1 lg:order-1"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   >
@@ -117,12 +115,10 @@ export function Section3() {
                       className="rounded-4xl object-cover aspect-square w-95 shadow-lg"
                     />
                   </motion.div>
-                  <div className="flex-1 flex items-start flex-col">
+                  <div className="flex-1 flex flex-col items-start order-2 lg:order-2">
                     <h1 className="text-5xl font-bold text-gray-800 mb-6">
                       {item.title.split(" ")[0]}{" "}
-                      <span className={item.color}>
-                        {item.title.split(" ")[1]}
-                      </span>
+                      <span className={item.color}>{item.title.split(" ")[1]}</span>
                     </h1>
                     <p className="text-gray-600 leading-relaxed text-2xl text-left">
                       {item.description}
@@ -130,6 +126,7 @@ export function Section3() {
                   </div>
                 </>
               )}
+
             </motion.div>
           )
         })}

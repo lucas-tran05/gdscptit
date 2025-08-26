@@ -15,27 +15,29 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-gdsc-primary text-white p-16">
+    <footer className="bg-gdsc-primary text-white px-6 py-12 md:px-16 md:py-16">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
+        <div className="flex flex-col md:flex-row justify-between gap-10">
           {/* Left Section - Logo and Title */}
           <div className="flex-1">
-            <div className="flex items-center gap-3 mb-3">
-              <GDSCIcon width={40} height={40} color="#fff" />
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-3">
+              <GDSCIcon width={40} height={40} color="#fff"/>
               <div>
-                <h3 className="text-2xl font-semibold">Google Developers Student Clubs</h3>
-                <p className="text-blue-100 text-lg">
+                <h3 className="text-xl md:text-2xl font-semibold text-center sm:text-left">
+                  Google Developers Student Clubs
+                </h3>
+                <p className="text-blue-100 text-base md:text-lg text-center sm:text-left">
                   Posts and Telecommunications Institute of Technology
                 </p>
               </div>
             </div>
 
             {/* Divider */}
-            <div className="w-120 h-px bg-blue-300 mb-4"></div>
+            <div className="w-full md:w-150 h-px bg-blue-300 mb-4"></div>
 
             {/* Social Icons and Copyright */}
-            <div className="flex items-center gap-4">
-              <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+              <div className="flex justify-center sm:justify-start gap-3">
                 <a href={pageInfo[0].link} target="_blank" rel="noopener noreferrer">
                   <FaFacebook className="w-6 h-6 hover:text-blue-200 cursor-pointer transition-colors" />
                 </a>
@@ -47,7 +49,7 @@ const Footer = () => {
                 </a>
               </div>
 
-              <div className="text-sm text-blue-100">
+              <div className="text-xs md:text-sm text-blue-100 text-center sm:text-left">
                 Copyright Google Developer Student Club - PTIT.<br />
                 All right reserved.
               </div>
@@ -55,20 +57,20 @@ const Footer = () => {
           </div>
 
           {/* Right Section - Contact Info */}
-          <div className="flex flex-col gap-3 text-xl">
+          <div className="flex flex-col gap-4 text-base md:text-xl">
             <div className="flex items-center gap-3">
               <FaPhone className="w-4 h-4" />
-              <span>Số điện thoại: {contactInfo.phone}</span>
+              <span>{contactInfo.phone}</span>
             </div>
 
             <div className="flex items-center gap-3">
               <FaEnvelope className="w-4 h-4" />
-              <span>Email: {contactInfo.email}</span>
+              <span>{contactInfo.email}</span>
             </div>
 
             <div className="flex items-center gap-3">
               <FaGlobe className="w-4 h-4" />
-              <span>Domain: {contactInfo.domain}</span>
+              <span>{contactInfo.domain}</span>
             </div>
           </div>
         </div>

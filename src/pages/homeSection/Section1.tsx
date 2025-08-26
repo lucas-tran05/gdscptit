@@ -16,7 +16,7 @@ export function Section1() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative flex items-center justify-center px-4 py-32"
+            className="relative flex items-center justify-center px-4 py-32 mt-12"
         >
             <div className="max-w-4xl mx-auto text-center">
                 {/* Main Title */}

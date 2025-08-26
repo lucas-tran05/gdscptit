@@ -10,10 +10,14 @@ export default function Home() {
       <Header />
       {/* Hero section */}
       <Section1 />
-      <Section2 />
+      <section id="about">
+        <Section2 />
+      </section >
       <Section3 />
       <Section4 />
+      <section id="footer">
       <Footer />
+      </section>
     </>
   )
 }

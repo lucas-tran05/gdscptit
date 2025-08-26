@@ -114,14 +114,14 @@ export function Section2() {
             <motion.img
                 src={com1}
                 alt="Community 1"
-                className="absolute bottom-0 left-30 w-72 h-72"
+                className="absolute bottom-0 left-0 md:left-30 w-72 h-72"
                 animate={{ y: [0, -20, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
             <motion.img
                 src={com2}
                 alt="Community 2"
-                className="absolute top-20 right-30 w-52 h-52"
+                className="absolute top-20 right-0 md:right-30 w-52 h-52"
                 animate={{ y: [0, 20, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             />
