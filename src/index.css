@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+@theme {
+    --color-gdsc-primary: #4285F4;
+}
