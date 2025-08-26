@@ -50,7 +50,6 @@ export function Section4() {
     <section className="relative flex items-center justify-center px-4 py-12">
       <div className="max-w-7xl mx-auto text-center w-full">
         <h1 className="text-4xl font-bold mb-10">Các sự kiện</h1>
-
         <Swiper
           modules={[Navigation, Autoplay, Pagination]}
           spaceBetween={30}

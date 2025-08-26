@@ -11,7 +11,6 @@ const Header = () => {
     { name: "Trang chủ", path: "/", type: "route" },
     { name: "Về chúng tôi", path: "about", type: "scroll" },
     { name: "Tuyển thành viên", path: "/form", type: "route" },
-    { name: "Liên hệ", path: "footer", type: "scroll" },
   ];
 
   return (
