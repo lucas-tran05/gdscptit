@@ -9,28 +9,28 @@ export function Section3() {
     {
       id: 1,
       title: "We Learn",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      description: "Ở GDG on Campus: PTIT, học tập là hành động. Thay vì chỉ lắng nghe, bạn sẽ được bắt tay vào làm, được thử nghiệm và sai sót trong một môi trường an toàn. Nắm vững công nghệ mới qua các dự án chuyên sâu, biến ý tưởng thành sản phẩm và học hỏi từ chính những thử thách thực tế là cách bạn sẽ tiến bộ tại đây.",
       color: "text-blue-500",
       img: img1,
     },
     {
       id: 2,
       title: "We Share",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      description: "GDG on Campus: PTIT tin rằng giá trị của kiến thức nằm ở sự lan tỏa. Một văn hóa cởi mở được xây dựng, nơi mọi góc nhìn đều được tôn trọng và bất kỳ ai cũng có thể là người chia sẻ. Qua việc chia sẻ, bạn không chỉ giúp cộng đồng cùng phát triển mà còn củng cố kiến thức và xây dựng sự tự tin.",
       color: "text-red-500",
       img: img2,
     },
     {
       id: 3,
       title: "We Grow",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      description: "GDG on Campus: PTIT mở ra cánh cửa đến với một mạng lưới kết nối rộng lớn và giá trị. Đây không chỉ là nơi bạn tìm thấy những người bạn cùng chung đam mê, mà còn là cơ hội gặp gỡ các chuyên gia, diễn giả và tiếp cận cộng đồng Google Developer toàn cầu. ",
       color: "text-green-500",
       img: img3,
     },
     {
       id: 4,
       title: "We Connect",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      description: "Learn, Share, và Connect chính là ba mảnh ghép tạo nên sự trưởng thành toàn diện tại GDG on Campus: PTIT. GDG on Campus: PTIT sẽ là bệ phóng để biến tiềm năng của bạn thành những thành tựu thực sự, ghi dấu ấn trong hành trình sinh viên của mình.",
       color: "text-yellow-500",
       img: img4,
     },
@@ -91,7 +91,7 @@ export function Section3() {
                     </p>
                   </div>
                   <motion.div
-                    className="flex-1 order-1 lg:order-2"
+                    className="flex-1 order-1 lg:order-2 flex justify-center"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   >
@@ -105,7 +105,7 @@ export function Section3() {
               ) : (
                 <>
                   <motion.div
-                    className="flex-1 order-1 lg:order-1"
+                    className="flex-1 order-1 lg:order-1 flex justify-center"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   >

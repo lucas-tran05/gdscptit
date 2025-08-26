@@ -48,7 +48,7 @@ const Header = () => {
 
       {/* Actions (desktop) */}
       <div className="hidden md:block">
-        <button className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary text-white hover:bg-gdsc-primary/80">
+        <button className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary text-white hover:bg-gdsc-primary/80 cursor-pointer" onClick={() => window.location.href = '/form'}>
           Đăng ký ngay
           <FaArrowRight />
         </button>
@@ -90,7 +90,7 @@ const Header = () => {
             )
           )}
 
-          <button className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary text-white hover:bg-gdsc-primary/80">
+          <button className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary text-white hover:bg-gdsc-primary/80" onClick={() => window.location.href = '/form'}>
             Đăng ký ngay
             <FaArrowRight />
           </button>

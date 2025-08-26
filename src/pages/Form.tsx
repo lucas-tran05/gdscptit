@@ -1,14 +1,16 @@
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
+import { Section1 } from "./formSection/Section1"
+import { Section2 } from "./formSection/Section2"
+import { Section3 } from "./formSection/Section3"
 export default function Home() {
   return (
     <>
       <Header />
-      <h1 className="text-2xl min-h-300">Form Page</h1>
-      <section id="footer">
-        
+      <Section1 />
+      <Section2 />
+      <Section3 />
       <Footer />
-      </section>
     </>
   )
 }

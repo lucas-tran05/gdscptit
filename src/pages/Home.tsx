@@ -17,14 +17,12 @@ export default function Home() {
       <Section3 />
       <Section4 />
       <div className="flex items-center justify-center p-8 w-full ">
-        <button className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary text-white hover:bg-gdsc-primary/80 cursor-pointer">
+        <button className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary text-white hover:bg-gdsc-primary/80 cursor-pointer" onClick={() => window.location.href = '/form'}>
           Đăng ký ngay
           <FaArrowRight />
         </button>
       </div>
-      <section id="footer">
-        <Footer />
-      </section>
+      <Footer />
     </>
   )
 }

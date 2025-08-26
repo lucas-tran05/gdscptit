@@ -55,11 +55,20 @@ export function Section1() {
                 <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center gap-3 px-8 py-4 bg-white text-gray-900 rounded-full border-2 border-gray-800 hover:border-gray-600 hover:shadow-lg transition-all duration-300 font-medium text-lg group cursor-pointer"
+                    className="
+                    inline-flex items-center gap-3 px-8 py-4 
+                    bg-white text-gdsc-primary rounded-full 
+                    border-2 border-gdsc-primary 
+                    hover:border-gdsc-primary/80 
+                    hover:shadow-[0_0_20px_rgba(49,130,206,0.5)] 
+                    transition-all duration-300 font-medium text-lg 
+                    group cursor-pointer    
+                "
                 >
                     <span>ĐĂNG KÝ THAM GIA</span>
                     <FaArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </motion.button>
+
 
                 {/* Background decorative circles */}
                 <div className="absolute inset-0 -z-10 overflow-hidden">
