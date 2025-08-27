@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { FaArrowRight } from "react-icons/fa";
 import gdgocLogo from "@/common/elemets/gdgoc-gen4.svg"
 import circleBlue from "@/common/elemets/circle-blue.svg"
 import circleYellow from "@/common/elemets/circle-yellow.svg"
