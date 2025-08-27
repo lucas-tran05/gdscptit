@@ -27,7 +27,7 @@ const Header = () => {
             <Link
               key={item.name}
               to={item.path}
-              className="text-gray-500 hover:text-gdsc-primary"
+              className="text-gray-500 hover:text-gdsc-primary-blue"
             >
               {item.name}
             </Link>
@@ -38,7 +38,7 @@ const Header = () => {
               smooth={true}
               duration={600}
               offset={-80}
-              className="cursor-pointer text-gray-500 hover:text-gdsc-primary"
+              className="cursor-pointer text-gray-500 hover:text-gdsc-primary-blue"
             >
               {item.name}
             </ScrollLink>
@@ -48,7 +48,7 @@ const Header = () => {
 
       {/* Actions (desktop) */}
       <div className="hidden md:block">
-        <button className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary text-white hover:bg-gdsc-primary/80 cursor-pointer" onClick={() => window.location.href = '/form'}>
+        <button className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary-blue text-white hover:bg-gdsc-primary-blue/80 cursor-pointer" onClick={() => window.location.href = '/form'}>
           Đăng ký ngay
           <FaArrowRight />
         </button>
@@ -70,7 +70,7 @@ const Header = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className="text-gray-600 hover:text-gdsc-primary"
+                className="text-gray-600 hover:text-gdsc-primary-blue"
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
@@ -82,7 +82,7 @@ const Header = () => {
                 smooth={true}
                 duration={600}
                 offset={-80}
-                className="cursor-pointer text-gray-600 hover:text-gdsc-primary"
+                className="cursor-pointer text-gray-600 hover:text-gdsc-primary-blue"
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
@@ -90,7 +90,7 @@ const Header = () => {
             )
           )}
 
-          <button className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary text-white hover:bg-gdsc-primary/80" onClick={() => window.location.href = '/form'}>
+          <button className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary-blue text-white hover:bg-gdsc-primary-blue/80" onClick={() => window.location.href = '/form'}>
             Đăng ký ngay
             <FaArrowRight />
           </button>
