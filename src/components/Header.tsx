@@ -14,10 +14,10 @@ const Header = () => {
   ];
 
   return (
-    <header className="flex items-center justify-between px-4 py-3 bg-white shadow fixed top-0 left-0 right-0 z-50">
+    <header className="flex items-center justify-between px-4 py-3 bg-white shadow fixed top-0 left-0 right-0 z-9999">
       {/* Logo */}
       <div className="flex items-center space-x-2">
-        <img src={logo1} alt="Logo" className="h-10" />
+        <img src={logo1} alt="Logo" className="h-10 cursor-pointer" onClick={() => (window.location.href = "/")} />
       </div>
 
       {/* Desktop Nav */}
