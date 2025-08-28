@@ -94,7 +94,7 @@ export function Section2() {
                 </div>
 
                 <motion.div
-                    className="border-2 border-gdsc-primary-blue p-6 rounded-4xl bg-blue-100 shadow-lg mb-12"
+                    className="border-2 border-gdsc-primary-blue p-6 rounded-4xl bg-blue-50 shadow-lg mb-12"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}

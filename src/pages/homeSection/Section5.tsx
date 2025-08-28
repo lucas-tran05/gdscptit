@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import com1 from "@/assets/home/section2/1.png";
 import com2 from "@/assets/home/section2/14.png";
 
 export function Section5() {
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const categories = [
@@ -115,9 +117,10 @@ export function Section5() {
     {/* Registration Button */}
     <div className="relative text-center z-10">
       <motion.button
-        className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl"
+        className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl cursor-pointer text-lg md:text-xl"
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
+        onClick={() => navigate("/form")}
       >
         ĐĂNG KÝ THAM GIA
       </motion.button>
