@@ -55,7 +55,6 @@ export function Section3() {
     });
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitSuccess, setSubmitSuccess] = useState(false);
     useEffect(() => {
         localStorage.setItem(
             "section3Data",
@@ -198,7 +197,6 @@ export function Section3() {
             await submitForm(payload);
             localStorage.removeItem("section3Data");
             notify("Gửi biểu mẫu thành công!", "success");
-            setSubmitSuccess(true);
             setFormData({
                 information: {
                     full_name: "",
@@ -217,9 +215,11 @@ export function Section3() {
             });
             setClubQuestion("");
             setErrors({});
-        } catch (error) {
-            notify("Đã có lỗi xảy ra. Vui lòng thử lại sau.", "error");
-        } finally {
+        } catch (res: any) {
+            const errorMessage = res?.error || "Có lỗi xảy ra, vui lòng thử lại!";
+            notify(errorMessage, "error");
+        }
+        finally {
             setIsSubmitting(false);
         }
     };
@@ -423,9 +423,9 @@ export function Section3() {
                             <option value="">Chọn</option>
                             <option value="TECH">Tech</option>
                             <option value="PR">NonTech - PR</option>
-                            <option value="DESIGN">NonTech - Design</option>
+                            <option value="DES">NonTech - Design</option>
                             <option value="MEDIA">NonTech - Media</option>
-                            <option value="HR-LG">NonTech - HR-LG</option>
+                            <option value="HRLG">NonTech - HR-LG</option>
                         </select>
                         {getFieldError("applied_department") && (
                             <p className="text-red-500 text-xs">{getFieldError("applied_department")}</p>
@@ -521,11 +521,6 @@ export function Section3() {
                         )}
                     </button>
                 </div>
-                {submitSuccess && (
-                    <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-                        Biểu mẫu đã lưu!
-                    </div>
-                )}
             </div>
         </div>
     );
