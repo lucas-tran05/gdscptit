@@ -88,20 +88,20 @@ export function Section2() {
                 </div>
 
                 <motion.div
-                    className="border-2 border-gdsc-primary p-6 rounded-4xl bg-white shadow-lg mb-12"
+                    className="border-2 border-gdsc-primary-blue p-6 rounded-4xl bg-white shadow-lg mb-12"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
                 >
                     <div className="flex flex-col lg:flex-row items-start gap-8 md:gap-24 px-8">
                         <div className="flex-1">
-                            <h2 className="font-bold text-2xl mb-2 text-gdsc-primary">Về Google Developer Groups</h2>
+                            <h2 className="font-bold text-2xl mb-2 text-gdsc-primary-blue">Về Google Developer Groups</h2>
                             <p className="text-gray-600 leading-relaxed">
                                 Google Developer Student Clubs (GDSC viết tắt) là chương trình được Google cấp quyền tổ chức và hỗ trợ, dành cho sinh viên có niềm yêu thích CNTT nói chung và công nghệ Google nói riêng. Năm 2023, đã có hơn 1500 GDSC Lead tại hơn 100 quốc gia.
                             </p>
                         </div>
                         <div className="flex-1">
-                            <h2 className="font-bold text-2xl mb-2 text-gdsc-primary">Về GDG on Campus PTIT</h2>
+                            <h2 className="font-bold text-2xl mb-2 text-gdsc-primary-blue">Về GDG on Campus PTIT</h2>
                             <p className="text-gray-600 leading-relaxed">
                                 Tháng 9/2022, GDSC-PTIT chính thức ra đời, là một chapter của GDSC tại Học viện Công nghệ Bưu chính Viễn thông. Đây là môi trường bổ ích để các thành viên có thể học tập và phát triển bản thân từ nguồn tài nguyên của Google, cùng nhau thực hiện sứ mệnh đem đến những giải pháp mang lại thay đổi tích cực cho địa phương và cộng đồng.
                             </p>

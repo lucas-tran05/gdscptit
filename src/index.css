@@ -7,3 +7,7 @@
     --color-gdsc-primary-red: #EA4335;
 }
 
+body{
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+}

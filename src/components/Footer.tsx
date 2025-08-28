@@ -15,7 +15,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-gdsc-primary text-white px-6 py-12 md:px-16 md:py-16">
+    <footer className="bg-gdsc-primary-blue text-white px-6 py-12 md:px-16 md:py-16">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between gap-10">
           {/* Left Section - Logo and Title */}

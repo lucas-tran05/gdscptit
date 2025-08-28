@@ -34,7 +34,7 @@ export function Section1() {
     return (
         <section className="relative flex items-center justify-center px-4 py-12  mt-16">
             <div className="max-w-7xl mx-auto text-center w-full">
-                <h1 className="text-4xl font-bold mb-6 text-gdsc-primary">Chia sẻ từ thành viên CLB</h1>
+                <h1 className="text-4xl font-bold mb-6 text-gdsc-primary-blue">Chia sẻ từ thành viên CLB</h1>
                 <Swiper
                     modules={[Navigation, Autoplay, Pagination]}
                     spaceBetween={30}

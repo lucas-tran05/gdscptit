@@ -53,7 +53,12 @@ export function Section1() {
         <div className="flex flex-col lg:flex-row items-center justify-start gap-4 md:gap-24 mb-18">
           {/* Logo + text */}
           <div className="flex-1">
-            <img src={gdgocLogo} alt="GDG OC Logo" className="mx-auto w-auto" />
+            <img
+              src={gdgocLogo}
+              alt="GDG OC Logo"
+              className="mx-auto max-w-[350px] md:max-w-[600px] w-full h-auto"
+            />
+
             <div className="flex items-center justify-center gap-2 mb-8">
               <span className="text-gray-500 text-lg md:text-2xl font-bold">
                 Powered by
@@ -99,19 +104,19 @@ export function Section1() {
 
           {/* Slideshow + gears */}
           <div className="flex-1 relative flex items-center justify-center mt-12 p-4">
-            <div className="relative shadow-[0_0_50px_rgba(37,99,235,0.3)] rounded-2xl overflow-hidden z-100 w-full max-w-lg">
+            <div className="relative shadow-[0_0_50px_rgba(37,99,235,0.3)] rounded-2xl overflow-hidden z-100 w-80 md:w-full h-auto max-w-lg aspect-[16/10]">
               <Swiper
                 modules={[Navigation, Autoplay, Pagination]}
                 autoplay={{ delay: 3500, disableOnInteraction: false }}
                 loop={true}
-                className="w-full h-80"
+                className="w-full h-auto"
               >
                 {[imgRoot, imgAlt1, imgAlt2].map((src, idx) => (
                   <SwiperSlide key={idx}>
                     <img
                       src={src}
                       alt={`Slide ${idx + 1}`}
-                      className="w-full h-full object-cover"
+                      className="w-full h-auto object-cover"
                     />
                   </SwiperSlide>
                 ))}
@@ -151,63 +156,63 @@ export function Section1() {
         </div>
 
         {/* Timeline */}
-                <div className="flex flex-col md:flex-row justify-center items-center mt-12 md:mt-28">
-                    {[
-                        {
-                            img: flagGreen,
-                            date: "04/09 - 11/09",
-                            text: "Vòng Đơn",
-                            color: "green",
-                            rotation: 10
-                        },
-                        {
-                            img: flagRed,
-                            date: "13/09 - 14/09",
-                            text: "Phỏng vấn",
-                            color: "red",
-                            rotation: -10
-                        },
-                        {
-                            img: flagBlue,
-                            date: "20/09 - 05/11",
-                            text: "Thử việc",
-                            color: "blue",
-                            rotation: 10
-                        },
-                    ].map((item, idx) => (
-                        <motion.div
-                            key={idx}
-                            className="flex-1 flex md:flex-col items-center justify-center group cursor-pointer my-4 md:my-6"
-                            whileHover={{ scale: 1.05 }}
-                        >
-                            {/* Mobile: zig-zag layout theo index */}
-                            <div
-                                className={`flex w-full items-center justify-center gap-4 ${idx % 2 === 0 ? "flex-row" : "flex-row-reverse"
-                                    } md:flex-row`}
-                            >
-                                <img
-                                    src={item.img}
-                                    alt={`Flag ${item.color}`}
-                                    className="w-24 object-cover"
-                                />
-                                <div className="flex flex-col items-center justify-center">
-                                    <p
-                                        className={`text-gdsc-primary-${item.color} font-bold text-lg md:text-2xl my-2`}
-                                    >
-                                        {item.date}
-                                    </p>
-                                    <motion.p
-                                        className={`text-lg md:text-2xl font-bold px-12 py-3 bg-${item.color}-200 border-2 border-gdsc-primary-${item.color} rounded-4xl`}
-                                        whileHover={{ rotate: item.rotation }}
-                                        transition={{ type: "spring", stiffness: 200 }}
-                                    >
-                                        {item.text}
-                                    </motion.p>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
+        <div className="flex flex-col md:flex-row justify-center items-center mt-12 md:mt-28">
+          {[
+            {
+              img: flagGreen,
+              date: "04/09 - 11/09",
+              text: "Vòng Đơn",
+              color: "green",
+              rotation: 10
+            },
+            {
+              img: flagRed,
+              date: "13/09 - 14/09",
+              text: "Phỏng vấn",
+              color: "red",
+              rotation: -10
+            },
+            {
+              img: flagBlue,
+              date: "20/09 - 05/11",
+              text: "Thử việc",
+              color: "blue",
+              rotation: 10
+            },
+          ].map((item, idx) => (
+            <motion.div
+              key={idx}
+              className="flex-1 flex md:flex-col items-center justify-center group cursor-pointer my-4 md:my-6"
+              whileHover={{ scale: 1.05 }}
+            >
+              {/* Mobile: zig-zag layout theo index */}
+              <div
+                className={`flex w-full items-center justify-center gap-4 ${idx % 2 === 0 ? "flex-row" : "flex-row-reverse"
+                  } md:flex-row`}
+              >
+                <img
+                  src={item.img}
+                  alt={`Flag ${item.color}`}
+                  className="w-24 object-cover"
+                />
+                <div className="flex flex-col items-center justify-center">
+                  <p
+                    className={`text-gdsc-primary-${item.color} font-bold text-lg md:text-2xl my-2`}
+                  >
+                    {item.date}
+                  </p>
+                  <motion.p
+                    className={`text-lg md:text-xl px-12 py-3 bg-${item.color}-200 border-2 border-gdsc-primary-${item.color} rounded-4xl`}
+                    whileHover={{ rotate: item.rotation }}
+                    transition={{ type: "spring", stiffness: 200 }}
+                  >
+                    {item.text}
+                  </motion.p>
                 </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </motion.section>
   )

@@ -3,9 +3,12 @@ import { Link as ScrollLink } from "react-scroll";
 import logo1 from "@/assets/logo-1.svg";
 import { FaArrowRight, FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const navItems = [
     { name: "Trang chủ", path: "/", type: "route" },
@@ -48,7 +51,7 @@ const Header = () => {
 
       {/* Actions (desktop) */}
       <div className="hidden md:block">
-        <button className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary-blue text-white hover:bg-gdsc-primary-blue/80 cursor-pointer" onClick={() => window.location.href = '/form'}>
+        <button className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary-blue text-white hover:bg-gdsc-primary-blue/80 cursor-pointer" onClick={() => navigate('/form')}>
           Đăng ký ngay
           <FaArrowRight />
         </button>
@@ -90,7 +93,7 @@ const Header = () => {
             )
           )}
 
-          <button className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary-blue text-white hover:bg-gdsc-primary-blue/80" onClick={() => window.location.href = '/form'}>
+          <button className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary-blue text-white hover:bg-gdsc-primary-blue/80" onClick={() => navigate('/form')}>
             Đăng ký ngay
             <FaArrowRight />
           </button>

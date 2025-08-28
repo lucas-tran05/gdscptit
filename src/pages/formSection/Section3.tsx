@@ -150,7 +150,7 @@ export function Section3() {
 
     return (
         <div className="py-8 px-4">
-            <div className="max-w-6xl mx-auto border-2 border-gdsc-primary p-8 rounded-2xl shadow-lg space-y-8">
+            <div className="max-w-6xl mx-auto border-2 border-gdsc-primary-blue p-8 rounded-2xl shadow-lg space-y-8">
                 {/* Personal Information Section */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
