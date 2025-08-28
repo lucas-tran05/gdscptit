@@ -4,6 +4,11 @@ import img2 from '@/assets/home/section3/img-2-s3-min.png'
 import img3 from '@/assets/home/section3/img-3-s3-min.png'
 import img4 from '@/assets/home/section3/img-4-s3-min.png'
 
+import circleBlue from '@/common/elemets/circle-blue.svg'
+import circleRed from '@/common/elemets/circle-red.svg'
+import circleYellow from '@/common/elemets/circle-yellow.svg'
+import circleGreen from '@/common/elemets/circle-green.svg'
+
 export function Section3() {
   const contentItems = [
     {
@@ -40,30 +45,41 @@ export function Section3() {
     <section className="relative flex items-center justify-center px-4 py-12">
       {/* Background decorative circles */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <motion.div
-          className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-20"
-          animate={{ y: [0, -20, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        <motion.img
+          src={circleBlue}
+          alt="blue circle"
+          className="absolute top-16 left-8 w-40 h-40 opacity-70"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         />
-        <motion.div
-          className="absolute top-40 right-20 w-24 h-24 bg-red-200 rounded-full opacity-20"
-          animate={{ y: [0, 15, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        <motion.img
+          src={circleRed}
+          alt="red circle"
+          className="absolute top-82 right-12 w-24 h-24 opacity-60"
+          animate={{ rotate: -360 }}
+          transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
         />
-        <motion.div
-          className="absolute bottom-32 left-20 w-20 h-20 bg-yellow-200 rounded-full opacity-20"
-          animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+
+        <motion.img
+          src={circleGreen}
+          alt="green circle"
+          className="absolute top-176 left-38 w-20 h-20 opacity-70"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         />
-        <motion.div
-          className="absolute bottom-20 right-32 w-28 h-28 bg-green-200 rounded-full opacity-20"
-          animate={{ y: [0, 20, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        <motion.img
+          src={circleYellow}
+          alt="yellow circle"
+          className="absolute bottom-92 left-28 w-16 h-16 opacity-50"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
         />
-        <motion.div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full opacity-30"
-          animate={{ scale: [1, 1.05, 1] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        <motion.img
+          src={circleGreen}
+          alt="green circle"
+          className="absolute bottom-16 right-40 w-32 h-32 opacity-65"
+          animate={{ rotate: -360 }}
+          transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
         />
       </div>
 
@@ -96,6 +112,7 @@ export function Section3() {
                     transition={{ duration: 0.3 }}
                   >
                     <img
+                      loading="lazy"
                       src={item.img}
                       alt={item.title}
                       className="rounded-4xl object-cover aspect-square w-95 shadow-lg"
@@ -110,6 +127,7 @@ export function Section3() {
                     transition={{ duration: 0.3 }}
                   >
                     <img
+                      loading="lazy"
                       src={item.img}
                       alt={item.title}
                       className="rounded-4xl object-cover aspect-square w-95 shadow-lg"

@@ -1,15 +1,17 @@
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
-import { FaArrowRight } from "react-icons/fa"
-import { Section1 } from "@/pages/homePageSection/Section1"
+import { Section1 } from "@/pages/homeSection/Section1"
 import { Section2 } from "@/pages/homeSection/Section2"
 import { Section3 } from "@/pages/homeSection/Section3"
-import { Section4 } from "@/pages/homeSection/Section4"
+// import { Section4 } from "@/pages/homeSection/Section4"
+import { Section5 } from "@/pages/homeSection/Section5"
 import { ScrollToTop } from "@/components/ScrollToTop";
+
+import { Section1 as Section1From } from "@/pages/formSection/Section1"
 
 export default function Home() {
   return (
-    <>
+    <div className="overflow-hidden">
       <Header />
       {/* Hero section */}
       <Section1 />
@@ -17,15 +19,11 @@ export default function Home() {
         <Section2 />
       </section >
       <Section3 />
-      <Section4 />
-      <div className="flex items-center justify-center p-8 w-full ">
-        <button className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary text-white hover:bg-gdsc-primary/80 cursor-pointer" onClick={() => window.location.href = '/form'}>
-          Đăng ký ngay
-          <FaArrowRight />
-        </button>
-      </div>
+      <Section1From />
+      {/* <Section4 /> */}
+      <Section5 />
       <Footer />
       <ScrollToTop />
-    </>
+    </div>
   )
 }

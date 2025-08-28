@@ -3,6 +3,8 @@ import questionsData from "@/data/question.json"
 import type { FormData } from "@/types/form";
 import { useNotification } from "@/components/Notification";
 import { submitForm } from "@/services/formService";
+import SuccessPopup from "@/components/SuccessPopup";
+
 interface ValidationErrors {
     [key: string]: string;
 }
@@ -41,6 +43,7 @@ function getInitialFormData(): FormData {
 
 export function Section3() {
     const { notify } = useNotification();
+    const [open, setOpen] = useState(false);
     const [formData, setFormData] = useState<FormData>(getInitialFormData);
     const [clubQuestion, setClubQuestion] = useState(() => {
         const saved = localStorage.getItem("section3Data");
@@ -196,7 +199,7 @@ export function Section3() {
             };
             await submitForm(payload);
             localStorage.removeItem("section3Data");
-            notify("Gửi biểu mẫu thành công!", "success");
+            setOpen(true);
             setFormData({
                 information: {
                     full_name: "",
@@ -230,8 +233,12 @@ export function Section3() {
 
     return (
         <div className="py-8 px-4">
+            <div>
+                <h1 className="text-3xl font-bold text-center text-gdsc-primary-blue mb-4">
+                    Đăng Ký Thành Viên
+                </h1>
+            </div>
             <div className="max-w-6xl mx-auto border-2 border-blue-500 p-8 rounded-2xl shadow-lg space-y-8">
-
 
                 {/* Personal Information Section */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -520,8 +527,10 @@ export function Section3() {
                             "Đăng ký ngay"
                         )}
                     </button>
+
                 </div>
             </div>
+            <SuccessPopup isOpen={open} onClose={() => setOpen(false)} />
         </div>
     );
 }

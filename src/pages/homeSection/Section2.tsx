@@ -1,13 +1,14 @@
 import image from "@/assets/home/section2/img-section2.svg"
-import com1 from "@/assets/home/section2/com-1.svg"
-import com2 from "@/assets/home/section2/com-2.svg"
+import com1 from "@/assets/home/section2/13.png"
+import com2 from "@/assets/home/section2/14.png"
 import { motion } from "framer-motion"
 
 export function Section2() {
     return (
         <section className="relative flex items-center justify-center px-4 py-12 overflow-hidden">
+            
             <div className="max-w-5xl mx-auto text-center relative z-10">
-                <div className="flex flex-col lg:flex-row items-center justify-start gap-4 mb-8">
+                <div className="flex flex-col lg:flex-row items-center justify-start gap-8 mb-8">
                     <motion.div
                         className="flex-1"
                         initial={{ opacity: 0, y: 50 }}
@@ -85,6 +86,7 @@ export function Section2() {
                         transition={{ duration: 0.8 }}
                     >
                         <img
+                            loading="lazy"
                             src={image}
                             alt="GDSC PTIT Team Photo"
                         />

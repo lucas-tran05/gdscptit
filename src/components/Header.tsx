@@ -17,8 +17,7 @@ const Header = () => {
   ];
 
   const linkClass = (active: boolean) =>
-    `cursor-pointer hover:text-gdsc-primary-blue ${
-      active ? "text-gdsc-primary-blue font-semibold" : "text-gray-600"
+    `cursor-pointer hover:text-gdsc-primary-blue ${active ? "text-gdsc-primary-blue font-semibold" : "text-gray-600"
     }`;
 
   const renderNavItem = (item: typeof navItems[number], isMobile = false) => {
@@ -53,59 +52,65 @@ const Header = () => {
   };
 
   return (
-    <header className="flex items-center justify-between px-4 py-3 bg-white shadow fixed top-0 left-0 right-0 z-[9999]">
-      {/* Logo */}
-      <div className="flex items-center space-x-2">
-        <img
-          src={logo1}
-          alt="Logo"
-          className="h-10 cursor-pointer"
-          onClick={() => navigate("/")}
-        />
-      </div>
+    <>
+      {/* Spacer bằng chiều cao header */}
+      <div className="h-16" />
 
-      {/* Desktop Nav */}
-      <nav className="hidden md:flex space-x-10 font-bold">
-        {navItems.map((item) => renderNavItem(item))}
-      </nav>
+      <header className="flex items-center justify-between px-4 py-3 bg-white shadow fixed top-0 left-0 right-0 z-[5000]">
+        {/* Logo */}
+        <div className="flex items-center space-x-2">
+          <img
+            src={logo1}
+            alt="Logo"
+            className="h-10 cursor-pointer"
+            onClick={() => navigate("/")}
+          />
+        </div>
 
-      {/* Actions (desktop) */}
-      <div className="hidden md:block">
-        <button
-          className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary-blue text-white hover:bg-gdsc-primary-blue/80"
-          onClick={() => navigate("/form")}
-        >
-          Đăng ký ngay
-          <FaArrowRight />
-        </button>
-      </div>
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex space-x-10 font-bold">
+          {navItems.map((item) => renderNavItem(item))}
+        </nav>
 
-      {/* Mobile Menu Button */}
-      <button
-        className="md:hidden text-2xl text-gray-600"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {isOpen ? <FaTimes /> : <FaBars />}
-      </button>
-
-      {/* Mobile Nav */}
-      {isOpen && (
-        <div className="absolute top-16 left-0 right-0 bg-white shadow-md flex flex-col items-center space-y-6 py-6 font-bold md:hidden">
-          {navItems.map((item) => renderNavItem(item, true))}
-
+        {/* Actions (desktop) */}
+        <div className="hidden md:block">
           <button
             className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary-blue text-white hover:bg-gdsc-primary-blue/80"
-            onClick={() => {
-              navigate("/form");
-              setIsOpen(false);
-            }}
+            onClick={() => navigate("/form")}
           >
             Đăng ký ngay
             <FaArrowRight />
           </button>
         </div>
-      )}
-    </header>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-2xl text-gray-600"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <FaTimes /> : <FaBars />}
+        </button>
+
+        {/* Mobile Nav */}
+        {isOpen && (
+          <div className="absolute top-16 left-0 right-0 bg-white shadow-md flex flex-col items-center space-y-6 py-6 font-bold md:hidden">
+            {navItems.map((item) => renderNavItem(item, true))}
+
+            <button
+              className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary-blue text-white hover:bg-gdsc-primary-blue/80"
+              onClick={() => {
+                navigate("/form");
+                setIsOpen(false);
+              }}
+            >
+              Đăng ký ngay
+              <FaArrowRight />
+            </button>
+          </div>
+        )}
+      </header>
+    </>
+  
   );
 };
 
