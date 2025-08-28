@@ -53,11 +53,14 @@ export function Section1() {
         <div className="flex flex-col lg:flex-row items-center justify-start gap-4 md:gap-24 mb-18">
           {/* Logo + text */}
           <div className="flex-1">
-            <img
+            <motion.img
               src={gdgocLogo}
               alt="GDG OC Logo"
               className="mx-auto max-w-[350px] md:max-w-[600px] w-full h-auto"
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
             />
+
 
             <div className="flex items-center justify-center gap-2 mb-8">
               <span className="text-gray-500 text-lg md:text-2xl font-bold">
