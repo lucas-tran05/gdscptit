@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation, Autoplay, Pagination } from "swiper/modules"
@@ -18,6 +19,7 @@ import imgAlt1 from "@/assets/home/section3/img-3-s3-min.png"
 import imgAlt2 from "@/assets/home/section3/img-4-s3-min.png"
 
 export function Section1() {
+  const navigate = useNavigate()
   const letters = [
     { char: "G", color: "text-blue-500" },
     { char: "o", color: "text-red-500" },
@@ -90,7 +92,7 @@ export function Section1() {
               <button
                 className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gdsc-primary-red text-white font-bold border-2 border-gdsc-primary-red 
                 hover:shadow-[0_0_20px_rgba(220,38,38,0.6)] cursor-pointer"
-                onClick={() => (window.location.href = "/form")}
+                onClick={() => navigate("#about")}
               >
                 Tìm hiểu thêm
               </button>
@@ -98,7 +100,7 @@ export function Section1() {
               <button
                 className="flex items-center gap-2 px-8 py-3 rounded-xl bg-blue-200 text-gdsc-primary-blue font-bold border-2 border-gdsc-primary-blue 
                 hover:shadow-[0_0_20px_rgba(37,99,235,0.6)] cursor-pointer"
-                onClick={() => (window.location.href = "/form")}
+                onClick={() => (navigate("/form"))}
               >
                 Đăng ký ngay
               </button>
