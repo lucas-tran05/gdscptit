@@ -12,8 +12,8 @@ const Header = () => {
 
   const navItems = [
     { name: "Trang chủ", path: "/", type: "route" },
-    { name: "Về chúng tôi", path: "about", type: "scroll" },
     { name: "Tuyển thành viên", path: "/form", type: "route" },
+    { name: "Chat bot hỏi đáp", path: "/chatbot", type: "route" }
   ];
 
   return (

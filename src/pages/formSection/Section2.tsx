@@ -39,6 +39,10 @@ export function Section2() {
                         <motion.div
                             key={idx}
                             className="bg-white rounded-2xl p-6 shadow hover:shadow-xl cursor-pointer relative text-left flex-1"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                            transition={{ duration: 0.6, delay: idx * 0.1 }}
                             whileHover={{ y: -5, scale: 1.02 }}
                         >
                             <div className={`w-12 h-12 flex items-center justify-center rounded-full mb-4 ${card.color}`}>
@@ -62,6 +66,10 @@ export function Section2() {
                             <motion.div
                                 key={idx}
                                 className="bg-white rounded-2xl p-6 shadow hover:shadow-xl cursor-pointer relative text-left"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.6, delay: idx * 0.1 }}
                                 whileHover={{ y: -5, scale: 1.02 }}
                             >
                                 <div className={`w-12 h-12 flex items-center justify-center rounded-full mb-4 ${card.color}`}>
@@ -81,6 +89,10 @@ export function Section2() {
                     <div className="lg:col-span-2">
                         <motion.div
                             className="bg-white h-full rounded-2xl p-6 shadow hover:shadow-xl cursor-pointer relative text-left"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
                             whileHover={{ y: -5, scale: 1.02 }}
                         >
                             <div className="text-left leading-relaxed">

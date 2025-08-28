@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "@/pages/Home";
 import Form from "@/pages/Form";
+import ChatBot from "@/pages/ChatBot";
 
 export const router = createBrowserRouter([
   {
@@ -10,5 +11,9 @@ export const router = createBrowserRouter([
   {
     path: "/form",
     element: <Form />,
+  },
+  {
+    path: "/chatbot",
+    element: <ChatBot />,
   }
 ]);

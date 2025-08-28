@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import questionsData from "@/data/question.json"
 import type { FormData } from "@/types/form";
-
+import { useNotification } from "@/components/Notification";
+import { submitForm } from "@/services/formService";
 interface ValidationErrors {
     [key: string]: string;
 }
@@ -39,6 +40,7 @@ function getInitialFormData(): FormData {
 }
 
 export function Section3() {
+    const { notify } = useNotification();
     const [formData, setFormData] = useState<FormData>(getInitialFormData);
     const [clubQuestion, setClubQuestion] = useState(() => {
         const saved = localStorage.getItem("section3Data");
@@ -183,7 +185,7 @@ export function Section3() {
 
     const handleSubmit = async () => {
         if (!validateForm()) {
-            alert("Vui lòng điền đầy đủ thông tin và trả lời tất cả câu hỏi!");
+            notify("Vui lòng điền đầy đủ thông tin và trả lời tất cả câu hỏi!", "error");
             return;
         }
 
@@ -193,13 +195,10 @@ export function Section3() {
                 ...formData,
                 answers: [...formData.answers, clubQuestion],
             };
-            console.log("Submit payload:", payload);
-
-            await new Promise((resolve) => setTimeout(resolve, 1000));
-
+            await submitForm(payload);
             localStorage.removeItem("section3Data");
+            notify("Gửi biểu mẫu thành công!", "success");
             setSubmitSuccess(true);
-
             setFormData({
                 information: {
                     full_name: "",
@@ -219,7 +218,7 @@ export function Section3() {
             setClubQuestion("");
             setErrors({});
         } catch (error) {
-            alert("Có lỗi xảy ra khi đăng ký. Vui lòng thử lại!");
+            notify("Đã có lỗi xảy ra. Vui lòng thử lại sau.", "error");
         } finally {
             setIsSubmitting(false);
         }

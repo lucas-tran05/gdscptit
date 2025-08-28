@@ -5,6 +5,8 @@ import { Section1 } from "@/pages/homePageSection/Section1"
 import { Section2 } from "@/pages/homeSection/Section2"
 import { Section3 } from "@/pages/homeSection/Section3"
 import { Section4 } from "@/pages/homeSection/Section4"
+import { ScrollToTop } from "@/components/ScrollToTop";
+
 export default function Home() {
   return (
     <>
@@ -23,6 +25,7 @@ export default function Home() {
         </button>
       </div>
       <Footer />
+      <ScrollToTop />
     </>
   )
 }

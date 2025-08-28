@@ -132,7 +132,7 @@ export function Section1() {
             <motion.img
               src={fanGreen}
               alt="Fan Green"
-              className="absolute -top-10 -left-2 w-26 h-26 z-1000"
+              className="absolute -top-10 -left-2 w-26 h-26 z-500"
               initial={{ rotate: 0 }}
               animate={{ rotate: 360 }}
               transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
@@ -152,7 +152,7 @@ export function Section1() {
             <motion.img
               src={circleBlue}
               alt="Gear Blue"
-              className="absolute -bottom-10 -right-10 w-40 h-40"
+              className="absolute -bottom-15 -right-10 w-40 h-40 z-500"
               initial={{ rotate: 0 }}
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -207,7 +207,7 @@ export function Section1() {
                     {item.date}
                   </p>
                   <motion.p
-                    className={`text-lg md:text-xl px-12 py-3 bg-${item.color}-200 border-2 border-gdsc-primary-${item.color} rounded-4xl`}
+                    className={`text-lg font-bold md:text-xl px-12 py-3 bg-${item.color}-200 border-2 border-gdsc-primary-${item.color} rounded-4xl`}
                     whileHover={{ rotate: item.rotation }}
                     transition={{ type: "spring", stiffness: 200 }}
                   >

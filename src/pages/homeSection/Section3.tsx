@@ -86,7 +86,7 @@ export function Section3() {
                       {item.title.split(" ")[0]}{" "}
                       <span className={item.color}>{item.title.split(" ")[1]}</span>
                     </h1>
-                    <p className="text-gray-600 leading-relaxed text-2xl text-left">
+                    <p className="text-gray-600 leading-relaxed text-lg md:text-xl text-justify">
                       {item.description}
                     </p>
                   </div>
@@ -120,7 +120,7 @@ export function Section3() {
                       {item.title.split(" ")[0]}{" "}
                       <span className={item.color}>{item.title.split(" ")[1]}</span>
                     </h1>
-                    <p className="text-gray-600 leading-relaxed text-2xl text-left">
+                    <p className="text-gray-600 leading-relaxed text-lg md:text-xl text-justify">
                       {item.description}
                     </p>
                   </div>
