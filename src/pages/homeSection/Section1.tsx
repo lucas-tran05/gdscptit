@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
-import cover from "@/assets/home/section1/cover.png";
+import cover from "@/assets/home/section1/cover.webp";
 import gdgocLogo from "@/assets/home/section1/16.png";
 
 import flagRed from "@/common/elemets/flag-red.svg"
