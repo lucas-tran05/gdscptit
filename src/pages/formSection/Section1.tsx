@@ -10,7 +10,7 @@ import des_NguyenTruongLam from "@/assets/home/camnhan/Des_NguyenTruongLam.jpg"
 import hrlg_NguyenQuangMinh from "@/assets/home/camnhan/HRLG_NguyenQuangMinh.jpg"
 import tech_MinhQuan from "@/assets/home/camnhan/Tech_MinhQuan.jpg"
 import tech_NguyenVanThang from "@/assets/home/camnhan/Tech_NguyenVanThang.jpg"
-import pr_GiaLinh from "@/assets/home/camnhan/PR_GiaLinh.jpg"
+import pr_GiaLinh from "@/assets/home/camnhan/Pr_GiaLinh.jpg"
 
 export function Section1() {
     const testimonials = [
