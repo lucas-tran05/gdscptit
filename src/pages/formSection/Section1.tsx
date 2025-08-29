@@ -7,6 +7,10 @@ import { useNotification } from "@/components/Notification";
 import { submitForm } from "@/services/formService";
 import SuccessPopup from "@/components/SuccessPopup";
 
+import NotYetPopup from "@/components/NotYetPopup";
+
+const REGISTRATION_END = new Date("2025-09-11T00:10:00+07:00");
+
 import circleBlue from '@/assets/sticker/circle-blue.svg'
 import circleRed from '@/assets/sticker/circle-red.svg'
 import circleYellow from '@/assets/sticker/circle-yellow.svg'
@@ -49,6 +53,28 @@ function getInitialFormData(): FormData {
 }
 
 export function Section1() {
+    // Popup end time state
+    const [showPopup, setShowPopup] = useState(false);
+
+    useEffect(() => {
+        const now = new Date();
+        if (now > REGISTRATION_END) {
+            setShowPopup(true);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (showPopup) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [showPopup]);
+
+
     const { notify } = useNotification();
     const [open, setOpen] = useState(false);
     const [formData, setFormData] = useState<FormData>(getInitialFormData);
@@ -584,6 +610,7 @@ export function Section1() {
                 </div>
             </div>
             <SuccessPopup isOpen={open} onClose={() => setOpen(false)} />
+            <NotYetPopup isOpen={showPopup} />
         </div>
     );
 }
