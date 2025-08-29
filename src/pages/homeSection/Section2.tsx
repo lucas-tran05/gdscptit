@@ -120,7 +120,7 @@ export function Section2() {
             <motion.img
                 src={com1}
                 alt="Community 1"
-                className="absolute bottom-0 left-0 md:left-30 w-72 h-72"
+                className="absolute bottom-0 left-0 md:left-30 w-72 h-72 -rotate-12"
                 animate={{ y: [0, -20, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />

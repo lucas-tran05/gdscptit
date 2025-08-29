@@ -118,14 +118,14 @@ export function Section5() {
       <motion.img
         src={com1}
         alt="Community 1"
-        className="absolute bottom-0 -left-25 w-56 md:w-72 z-0"
+        className="absolute bottom-0 -left-25 w-56 md:w-72 z-0 -rotate-15"
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.img
         src={com2}
         alt="Community 2"
-        className="absolute top-0 -right-10 md:right-0 w-40 md:w-52 z-50"
+        className="absolute top-0 -right-10 md:right-0 w-40 md:w-52 z-50 rotate-12"
         animate={{ y: [0, 20, 0] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
       />
