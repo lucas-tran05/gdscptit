@@ -61,6 +61,7 @@ export function Section4() {
                     spaceBetween={30}
                     slidesPerView={1}
                     autoplay={{ delay: 3000 }}
+                    loop={true}
                     breakpoints={{
                         640: { slidesPerView: 1 },
                         1024: { slidesPerView: 1 },
