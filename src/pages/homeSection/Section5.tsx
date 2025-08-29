@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import categoriesGDSC from "@/data/categories.json";
 import benefits from "@/data/benefits.json";
 import { motion } from "framer-motion";
-import com1 from "@/assets/home/section2/1.png";
-import com2 from "@/assets/home/section2/14.png";
+import com1 from "@/assets/home/section5/1.png";
+import com2 from "@/assets/home/section5/14.png";
 
 export function Section5() {
   const navigate = useNavigate();

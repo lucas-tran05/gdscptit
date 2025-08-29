@@ -1,5 +1,5 @@
 import { FaFacebook, FaInstagram, FaLinkedin, FaPhone, FaEnvelope, FaGlobe } from 'react-icons/fa';
-import { GDSCIcon } from '@/common/icon';
+import { GDSCIcon } from '@/assets/sticker/icon';
 
 const Footer = () => {
   const pageInfo = [

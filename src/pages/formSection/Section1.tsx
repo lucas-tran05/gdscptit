@@ -1,99 +1,589 @@
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Navigation, Autoplay, Pagination } from "swiper/modules"
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
+import { useState, useEffect } from "react";
+import questionsData from "@/data/question.json"
+import majorsData from "@/data/majors.json"
+import { motion } from "framer-motion";
+import type { FormData } from "@/types/form";
+import { useNotification } from "@/components/Notification";
+import { submitForm } from "@/services/formService";
+import SuccessPopup from "@/components/SuccessPopup";
 
-import pointer from "@/assets/form/Section1/6.png"
+import circleBlue from '@/assets/sticker/circle-blue.svg'
+import circleRed from '@/assets/sticker/circle-red.svg'
+import circleYellow from '@/assets/sticker/circle-yellow.svg'
+import circleGreen from '@/assets/sticker/circle-green.svg'
 
-import des_NguyenTruongLam from "@/assets/home/camnhan/Des_NguyenTruongLam.jpg"
-import hrlg_NguyenQuangMinh from "@/assets/home/camnhan/HRLG_NguyenQuangMinh.jpg"
-import tech_MinhQuan from "@/assets/home/camnhan/Tech_MinhQuan.jpg"
-import tech_NguyenVanThang from "@/assets/home/camnhan/Tech_NguyenVanThang.jpg"
-import pr_GiaLinh from "@/assets/home/camnhan/Pr_GiaLinh.jpg"
+interface ValidationErrors {
+    [key: string]: string;
+}
+const defaultFormData: FormData = {
+    information: {
+        full_name: "",
+        student_code: "",
+        gender: "Nam",
+        email: "",
+        phone_number: "",
+        facebook_link: "",
+        dob: "",
+        university: "",
+        majors: "",
+        student_year: "",
+        applied_department: "",
+    },
+    answers: Array(10).fill(""),
+};
+
+function getInitialFormData(): FormData {
+    const saved = localStorage.getItem("section3Data");
+    if (saved) {
+        try {
+            const parsed = JSON.parse(saved);
+            return {
+                information: { ...defaultFormData.information, ...(parsed.information || {}) },
+                answers: parsed.answers || defaultFormData.answers,
+            };
+        } catch {
+            return defaultFormData;
+        }
+    }
+    return defaultFormData;
+}
 
 export function Section1() {
-    const testimonials = [
-        {
-            id: 1,
-            name: "Nguyễn Trường Lâm",
-            role: "Thành viên NonTech - Design",
-            comment: "A cảm thấy rất vui khi được trở thành một mảnh ghép của GDG oc PTIT và cũng rất tự hào với những thành công của CLB. GDGocPTIT đã giúp mình học hỏi được nhiều điều mới, mở rộng các mối quan hệ, thấy rằng mình thật nhỏ bé những tương lai của mình thật rộng lớn. Cảm ơn GDG oc PTIT đã đồng hành cùng mình trong 2 năm đầu đại học. Sẽ tiếp tục đồng hành cùng nhau. Mình sẽ luôn dõi theo và sẵn sàng khi CLB cần mình. Yêu nhà G.",
-            image: des_NguyenTruongLam,
-        },
-        {
-            id: 2,
-            name: "Nguyễn Quang Minh",
-            role: "Thành viên HR-LG",
-            comment: "Sau một thời gian không quá dài, nhưng cũng không quá ngắn, đối với mình, mình rất vui và hạnh phúc, vui lắm, hạnh phúc lắm khi được làm việc với các bạn nhà G.",
-            image: hrlg_NguyenQuangMinh,
-        },
-        {
-            id: 3,
-            name: "Gia Linh",
-            role: "Thành viên NonTech - PR",
-            comment: "Đầu tiên về GDGoC, môi trường mình siêu nhiều người giỏi và luôn cởi mở sẵn sàng share kinh nghiệm cho tất cả mọi người giống như những gì CLB đã cam kết với em trong slogan 'we learn, share, connect and grow'. Trong công việc thì luôn chuyên nghiệp, chỉn chu và luôn take care được tất cả các thành viên, kể cả là trainee. Một năm vừa qua cùng GDGoC thật sự siêu tuyệt vời. Em rất hạnh phúc vì đã được làm một phần của nhà G.",
-            image: pr_GiaLinh,
-        },
-        {
-            id: 4,
-            name: "Minh Quân",
-            role: "Thành viên Tech",
-            comment: "Mình thấy Gen 3 có lẽ hiện đang là hoạt động nhiều nhất từ trước đến giờ. Nhiều sự kiện được đưa về cho CLB cũng như các thành viên đều gặt hái được những thành tựu xịn xò! Mình cũng rất vui khi được đồng hành cùng với các anh em Core team cũng như làm việc với các thành viên mới. Phải nói các bạn giỏi hơn chúng mình xưa nhiều. Kỉ niệm đáng nhớ nhất là đợt đi chạy sự kiện Build With AI phiên bản PTIT, anh em lúc đó đồng tâm hiệp lực hỗ trợ sự kiện chỉnh chu luôn!",
-            image: tech_MinhQuan,
-        },
-        {
-            id: 5,
-            name: "Nguyễn Văn Thắng",
-            role: "Thành viên Tech",
-            comment: "Anh thấy các bạn năm nay rất năng động, đặc biệt là tham gia nhiều các cuộc thi như startup innovation, bootcamp… nhiều khi anh còn thấy các bạn Gen 3 năm nay còn giỏi hơn cả anh. Anh kỳ vọng vào mọi người rất nhiều và mọi người đã không để anh thất vọng. Anh rất mong chờ sự lãnh đạo mới của các bạn Gen 3 năm nay, cùng với sự nhiệt huyết giỏi giang của mình. Rất mong GDGoC PTIT với sự lãnh đạo của Gen 3 sẽ vươn mình xa hơn nữa.",
-            image: tech_NguyenVanThang,
-        },
-    ];
+    const { notify } = useNotification();
+    const [open, setOpen] = useState(false);
+    const [formData, setFormData] = useState<FormData>(getInitialFormData);
+    const [clubQuestion, setClubQuestion] = useState(() => {
+        const saved = localStorage.getItem("section3Data");
+        if (saved) {
+            try {
+                return JSON.parse(saved).clubQuestion || "";
+            } catch {
+                return "";
+            }
+        }
+        return "";
+    });
+    const [errors, setErrors] = useState<Record<string, string>>({});
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    useEffect(() => {
+        localStorage.setItem(
+            "section3Data",
+            JSON.stringify({
+                information: formData.information,
+                answers: formData.answers,
+                clubQuestion,
+            })
+        );
+    }, [formData, clubQuestion]);
+
+
+    const validateField = (name: string, value: string) => {
+        const newErrors = { ...errors };
+        switch (name) {
+            case "full_name":
+                !value.trim()
+                    ? (newErrors.full_name = "Họ và tên là bắt buộc")
+                    : delete newErrors.full_name;
+                break;
+            case "student_code":
+                !value.trim()
+                    ? (newErrors.student_code = "Mã sinh viên là bắt buộc")
+                    : delete newErrors.student_code;
+                break;
+            case "email":
+                if (!value.trim()) newErrors.email = "Email là bắt buộc";
+                else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
+                    newErrors.email = "Email không hợp lệ";
+                else delete newErrors.email;
+                break;
+            case "phone_number":
+                if (!value.trim()) newErrors.phone_number = "Số điện thoại là bắt buộc";
+                else if (!/^[0-9+\-\s()]+$/.test(value))
+                    newErrors.phone_number = "Số điện thoại không hợp lệ";
+                else delete newErrors.phone_number;
+                break;
+            case "facebook_link":
+                if (!value.trim()) newErrors.facebook_link = "Link Facebook là bắt buộc";
+                else if (!value.includes("facebook.com") && !value.includes("fb.com"))
+                    newErrors.facebook_link = "Link Facebook không hợp lệ";
+                else delete newErrors.facebook_link;
+                break;
+            case "dob":
+                !value
+                    ? (newErrors.dob = "Ngày sinh là bắt buộc")
+                    : delete newErrors.dob;
+                break;
+            case "university":
+                !value.trim()
+                    ? (newErrors.university = "Trường đang học là bắt buộc")
+                    : delete newErrors.university;
+                break;
+            case "majors":
+                !value.trim()
+                    ? (newErrors.majors = "Chuyên ngành là bắt buộc")
+                    : delete newErrors.majors;
+                break;
+            case "student_year":
+                !value
+                    ? (newErrors.student_year = "Năm học là bắt buộc")
+                    : delete newErrors.student_year;
+                break;
+            case "applied_department":
+                !value
+                    ? (newErrors.applied_department = "Ban ứng tuyển là bắt buộc")
+                    : delete newErrors.applied_department;
+                break;
+        }
+        setErrors(newErrors);
+    };
+
+    const handleInfoChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    ) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            information: { ...prev.information, [name]: value },
+        }));
+        validateField(name, value);
+    };
+
+    const handleAnswerChange = (index: number, value: string) => {
+        const newAnswers = [...formData.answers];
+        newAnswers[index] = value;
+        setFormData((prev) => ({ ...prev, answers: newAnswers }));
+
+        const newErrors = { ...errors };
+        if (value.trim()) delete newErrors[`question-${index}`];
+        else newErrors[`question-${index}`] = `Câu hỏi ${index + 1} là bắt buộc`;
+        setErrors(newErrors);
+    };
+
+    const handleClubQuestionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        const value = e.target.value;
+        if (value.length <= 300) setClubQuestion(value);
+    };
+
+    const validateForm = (): boolean => {
+        const newErrors: ValidationErrors = {};
+        const info = formData.information;
+
+        if (!info.full_name.trim()) newErrors.full_name = "Họ và tên là bắt buộc";
+        if (!info.student_code.trim()) newErrors.student_code = "Mã sinh viên là bắt buộc";
+        if (!info.email.trim()) newErrors.email = "Email là bắt buộc";
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(info.email)) newErrors.email = "Email không hợp lệ";
+        if (!info.phone_number.trim()) newErrors.phone_number = "Số điện thoại là bắt buộc";
+        else if (!/^[0-9+\-\s()]+$/.test(info.phone_number)) newErrors.phone_number = "Số điện thoại không hợp lệ";
+        if (!info.facebook_link.trim()) newErrors.facebook_link = "Link Facebook là bắt buộc";
+        else if (!info.facebook_link.includes("facebook.com") && !info.facebook_link.includes("fb.com"))
+            newErrors.facebook_link = "Link Facebook không hợp lệ";
+        if (!info.dob) newErrors.dob = "Ngày sinh là bắt buộc";
+        if (!info.university.trim()) newErrors.university = "Trường đang học là bắt buộc";
+        if (!info.majors.trim()) newErrors.majors = "Chuyên ngành là bắt buộc";
+        if (!info.student_year) newErrors.student_year = "Năm học là bắt buộc";
+        if (!info.applied_department) newErrors.applied_department = "Ban ứng tuyển là bắt buộc";
+
+        formData.answers.forEach((answer, index) => {
+            if (!answer.trim())
+                newErrors[`question-${index}`] = `Câu hỏi ${index + 1} là bắt buộc`;
+        });
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const handleSubmit = async () => {
+        if (!validateForm()) {
+            notify("Vui lòng điền đầy đủ thông tin và trả lời tất cả câu hỏi!", "error");
+            return;
+        }
+
+        setIsSubmitting(true);
+        try {
+            const payload = {
+                ...formData,
+                answers: [...formData.answers, clubQuestion],
+            };
+            await submitForm(payload);
+            localStorage.removeItem("section3Data");
+            setOpen(true);
+            setFormData({
+                information: {
+                    full_name: "",
+                    student_code: "",
+                    gender: "Nam",
+                    email: "",
+                    phone_number: "",
+                    facebook_link: "",
+                    dob: "",
+                    university: "",
+                    majors: "",
+                    student_year: "",
+                    applied_department: "",
+                },
+                answers: Array(10).fill(""),
+            });
+            setClubQuestion("");
+            setErrors({});
+        } catch (res: any) {
+            const errorMessage = res?.error || "Có lỗi xảy ra, vui lòng thử lại!";
+            notify(errorMessage, "error");
+        }
+        finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    const questions = questionsData.questions;
+    const majors = majorsData;
+    const getFieldError = (fieldName: string) => errors[fieldName];
+    const hasFieldError = (fieldName: string) => !!errors[fieldName];
 
     return (
-        <section className="relative flex items-center justify-center px-4 py-12">
-            <div className="w-full mx-auto text-center">
-                <h1 className="text-3xl md:text-4xl font-bold mb-6 text-gdsc-primary-blue">Chia sẻ từ thành viên CLB</h1>
-                <img src={pointer} loading="lazy" alt="Pointer" className="absolute z-50 top-20 md:top-10 -right-14 lg:right-52  w-36 h-36" />
-                <Swiper
-                    modules={[Navigation, Autoplay, Pagination]}
-                    spaceBetween={30}
-                    slidesPerView={1}
-                    // navigation
-                    // pagination={{ clickable: true }}
-                    autoplay={{ delay: 3000 }}
-                    breakpoints={{
-                        640: { slidesPerView: 1 },
-                        1024: { slidesPerView: 1 },
-                    }}
-                    className="relative overflow-visible"
-                >
-                    {testimonials.map((testimonial) => (
-                        <SwiperSlide key={testimonial.id}>
-                            <div className="flex flex-col md:flex-row items-center md:items-start p-12 transition mb-6 gap-12 max-w-6xl mx-auto border-3 border-gdsc-primary-blue rounded-4xl">
-                                {/* Text */}
-                                <div className="text-center md:text-left h-full flex flex-col justify-between">
-                                    <p className="text-lg text-gray-500 mb-2">{testimonial.role}</p>
-                                    <p className="text-gray-600 italic text-justify">"{testimonial.comment}"</p>
-                                    <h3 className="text-xl font-bold mb-1 text-gdsc-primary-blue mt-6">{testimonial.name}</h3>
-                                </div>
-                                {/* Avatar */}
-                                <img
-                                    loading="lazy"
-                                    src={testimonial.image}
-                                    alt={testimonial.name}
-                                    className="w-[200px] h-[200px] md:w-[250px] md:h-[250px] rounded-full md:mr-4 mb-4 md:mb-0 object-cover"
-
-                                />
-
-                            </div>
-
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+        <div className="relative py-8 px-4">
+            <div>
+                <h1 className="text-3xl font-bold text-center text-gdsc-primary-blue mb-4">
+                    Đăng Ký Thành Viên
+                </h1>
             </div>
-        </section>
+            {/* Background decorative circles */}
+            <div className="absolute inset-0 -z-10 overflow-hidden">
+                <motion.img
+                    src={circleBlue}
+                    alt="blue circle"
+                    className="absolute top-16 left-8 w-40 h-40 opacity-70"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                />
+                <motion.img
+                    src={circleRed}
+                    alt="red circle"
+                    className="absolute top-82 right-12 w-24 h-24 opacity-60"
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+                />
 
-    )
+                <motion.img
+                    src={circleGreen}
+                    alt="green circle"
+                    className="absolute top-176 left-38 w-20 h-20 opacity-70"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                />
+                <motion.img
+                    src={circleYellow}
+                    alt="yellow circle"
+                    className="absolute bottom-92 left-28 w-16 h-16 opacity-50"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                />
+                <motion.img
+                    src={circleGreen}
+                    alt="green circle"
+                    className="absolute bottom-16 right-40 w-32 h-32 opacity-65"
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+                />
+            </div>
+            <div className="max-w-6xl mx-auto border-2 border-blue-500 p-8 rounded-2xl shadow-lg space-y-8 bg-white">
+                {/* Personal Information Section */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                        <label className="block text-sm font-medium text-gray-700">
+                            Họ và tên: <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            name="full_name"
+                            value={formData.information.full_name}
+                            onChange={handleInfoChange}
+                            className={`w-full border rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all ${hasFieldError("full_name") ? "border-red-500" : "border-gray-300"
+                                }`}
+                        />
+                        {getFieldError("full_name") && (
+                            <p className="text-red-500 text-xs">{getFieldError("full_name")}</p>
+                        )}
+                    </div>
+
+                    <div className="space-y-2">
+                        <label className="block text-sm font-medium text-gray-700">
+                            Mã sinh viên: <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            name="student_code"
+                            value={formData.information.student_code}
+                            onChange={handleInfoChange}
+                            className={`w-full border rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all ${hasFieldError("student_code") ? "border-red-500" : "border-gray-300"
+                                }`}
+                        />
+                        {getFieldError("student_code") && (
+                            <p className="text-red-500 text-xs">{getFieldError("student_code")}</p>
+                        )}
+                    </div>
+
+                    <div className="space-y-2">
+                        <label className="block text-sm font-medium text-gray-700">
+                            Giới tính: <span className="text-red-500">*</span>
+                        </label>
+                        <select
+                            name="gender"
+                            value={formData.information.gender}
+                            onChange={handleInfoChange}
+                            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white"
+                        >
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                        </select>
+                    </div>
+
+                    <div className="space-y-2">
+                        <label className="block text-sm font-medium text-gray-700">
+                            Email cá nhân: <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="email"
+                            name="email"
+                            value={formData.information.email}
+                            onChange={handleInfoChange}
+                            className={`w-full border rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all ${hasFieldError("email") ? "border-red-500" : "border-gray-300"
+                                }`}
+                        />
+                        {getFieldError("email") && (
+                            <p className="text-red-500 text-xs">{getFieldError("email")}</p>
+                        )}
+                    </div>
+
+                    <div className="space-y-2">
+                        <label className="block text-sm font-medium text-gray-700">
+                            Số điện thoại: <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="tel"
+                            name="phone_number"
+                            value={formData.information.phone_number}
+                            onChange={handleInfoChange}
+                            className={`w-full border rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all ${hasFieldError("phone_number") ? "border-red-500" : "border-gray-300"
+                                }`}
+                        />
+                        {getFieldError("phone_number") && (
+                            <p className="text-red-500 text-xs">{getFieldError("phone_number")}</p>
+                        )}
+                    </div>
+
+                    <div className="space-y-2">
+                        <label className="block text-sm font-medium text-gray-700">
+                            Link Facebook: <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            name="facebook_link"
+                            value={formData.information.facebook_link}
+                            onChange={handleInfoChange}
+                            className={`w-full border rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all ${hasFieldError("facebook_link") ? "border-red-500" : "border-gray-300"
+                                }`}
+                        />
+                        {getFieldError("facebook_link") && (
+                            <p className="text-red-500 text-xs">{getFieldError("facebook_link")}</p>
+                        )}
+                    </div>
+
+                    <div className="space-y-2">
+                        <label className="block text-sm font-medium text-gray-700">
+                            Ngày sinh: <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="date"
+                            name="dob"
+                            value={formData.information.dob}
+                            onChange={handleInfoChange}
+                            className={`w-full border rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all ${hasFieldError("dob") ? "border-red-500" : "border-gray-300"
+                                }`}
+                        />
+                        {getFieldError("dob") && (
+                            <p className="text-red-500 text-xs">{getFieldError("dob")}</p>
+                        )}
+                    </div>
+
+                    <div className="space-y-2">
+                        <label className="block text-sm font-medium text-gray-700">
+                            Trường đang học: <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            name="university"
+                            value={formData.information.university}
+                            onChange={handleInfoChange}
+                            className={`w-full border rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all ${hasFieldError("university") ? "border-red-500" : "border-gray-300"
+                                }`}
+                        />
+                        {getFieldError("university") && (
+                            <p className="text-red-500 text-xs">{getFieldError("university")}</p>
+                        )}
+                    </div>
+
+                    <div className="space-y-2">
+                        <label className="block text-sm font-medium text-gray-700">
+                            Chuyên ngành: <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            name="majors"
+                            list="majors-list"
+                            value={formData.information.majors}
+                            onChange={handleInfoChange}
+                            placeholder="Gõ để tìm chuyên ngành..."
+                            className={`w-full border rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all placeholder-gray-400 ${hasFieldError("majors") ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-gray-300"
+                                }`}
+                        />
+                        <datalist id="majors-list">
+                            {majors.map((m) => (
+                                <option key={m.ma_nganh} value={m.ten_nganh} />
+                            ))}
+                        </datalist>
+                        {getFieldError("majors") && (
+                            <p className="text-red-500 text-xs">{getFieldError("majors")}</p>
+                        )}
+                    </div>
+
+
+                    <div className="space-y-2">
+                        <label className="block text-sm font-medium text-gray-700">
+                            Bạn là sinh viên năm: <span className="text-red-500">*</span>
+                        </label>
+                        <select
+                            name="student_year"
+                            value={formData.information.student_year}
+                            onChange={handleInfoChange}
+                            className={`w-full border rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white ${hasFieldError("student_year") ? "border-red-500" : "border-gray-300"
+                                }`}
+                        >
+                            <option value="">Chọn</option>
+                            <option value="Năm 1">Năm 1</option>
+                            <option value="Năm 2">Năm 2</option>
+                            <option value="Năm 3">Năm 3</option>
+                            <option value="Năm 4">Năm 4</option>
+                        </select>
+                        {getFieldError("student_year") && (
+                            <p className="text-red-500 text-xs">{getFieldError("student_year")}</p>
+                        )}
+                    </div>
+
+                    <div className="space-y-2">
+                        <label className="block text-sm font-medium text-gray-700">
+                            Ban ứng tuyển: <span className="text-red-500">*</span>
+                        </label>
+                        <select
+                            name="applied_department"
+                            value={formData.information.applied_department}
+                            onChange={handleInfoChange}
+                            className={`w-full border rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white ${hasFieldError("applied_department") ? "border-red-500" : "border-gray-300"
+                                }`}
+                        >
+                            <option value="">Chọn</option>
+                            <option value="TECH">Tech</option>
+                            <option value="PR">NonTech - PR</option>
+                            <option value="DES">NonTech - Design</option>
+                            <option value="MEDIA">NonTech - Media</option>
+                            <option value="HRLG">NonTech - HR-LG</option>
+                        </select>
+                        {getFieldError("applied_department") && (
+                            <p className="text-red-500 text-xs">{getFieldError("applied_department")}</p>
+                        )}
+                    </div>
+                </div>
+
+                {/* Questions Section */}
+                <div className="space-y-6">
+                    <h3 className="text-lg font-semibold text-gray-800 border-b pb-2">
+                        Câu hỏi khảo sát <span className="text-red-500">*</span>
+                    </h3>
+                    {questions.map((q, idx) => (
+                        <div key={idx} className="space-y-3">
+                            <p className="font-medium text-gdsc-primary-blue">
+                                {idx + 1}. {q.question} <span className="text-red-500">*</span>
+                            </p>
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                                {q.options.map((option, optIdx) => (
+                                    <label
+                                        key={optIdx}
+                                        className="flex items-start gap-3 cursor-pointer"
+                                    >
+                                        <input
+                                            type="radio"
+                                            name={`question-${idx}`}
+                                            value={String.fromCharCode(65 + optIdx)}
+                                            checked={
+                                                formData.answers[idx] ===
+                                                String.fromCharCode(65 + optIdx)
+                                            }
+                                            onChange={() =>
+                                                handleAnswerChange(
+                                                    idx,
+                                                    String.fromCharCode(65 + optIdx)
+                                                )
+                                            }
+                                            className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500 mt-0.5 flex-shrink-0"
+                                        />
+                                        <span className=" text-gray-700">
+                                            {String.fromCharCode(65 + optIdx)}. {option}
+                                        </span>
+                                    </label>
+                                ))}
+                            </div>
+                            {getFieldError(`question-${idx}`) && (
+                                <p className="text-red-500 text-xs">{getFieldError(`question-${idx}`)}</p>
+                            )}
+                        </div>
+                    ))}
+                </div>
+
+                {/* Club Question Section */}
+                <div className="space-y-2">
+                    <label className="block text-sm font-medium text-gray-700">
+                        Câu hỏi dành cho CLB:
+                    </label>
+                    <div className="relative">
+                        <textarea
+                            name="clubQuestion"
+                            value={clubQuestion}
+                            onChange={handleClubQuestionChange}
+                            rows={4}
+                            maxLength={300}
+                            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none pr-16"
+                            placeholder="Nhập câu trả lời của bạn..."
+                        />
+                        <div className={`absolute bottom-3 right-3 text-xs font-medium ${clubQuestion.length >= 280 ? 'text-red-500' :
+                            clubQuestion.length >= 250 ? 'text-orange-500' : 'text-gray-400'
+                            }`}>
+                            {clubQuestion.length}/300
+                        </div>
+                    </div>
+                </div>
+
+                {/* Submit Button */}
+                <div className="flex justify-center pt-4">
+                    <button
+                        onClick={handleSubmit}
+                        disabled={isSubmitting}
+                        className={`flex items-center gap-2 px-6 py-3 font-medium rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg ${isSubmitting
+                            ? "bg-gray-400 cursor-not-allowed text-white"
+                            : "bg-blue-500 hover:bg-blue-600 text-white"
+                            }`}
+                    >
+                        {isSubmitting ? (
+                            <>
+                                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                                Đang xử lý...
+                            </>
+                        ) : (
+                            "Đăng ký ngay"
+                        )}
+                    </button>
+
+                </div>
+            </div>
+            <SuccessPopup isOpen={open} onClose={() => setOpen(false)} />
+        </div>
+    );
 }

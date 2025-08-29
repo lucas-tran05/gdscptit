@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 import cover from "@/assets/home/section1/cover.webp";
 import gdgocLogo from "@/assets/home/section1/16.png";
 
-import flagRed from "@/common/elemets/flag-red.svg"
-import flagBlue from "@/common/elemets/flag-blue.svg"
-import flagGreen from "@/common/elemets/flag-green.svg"
+import flagRed from "@/assets/sticker/flag-red.svg"
+import flagBlue from "@/assets/sticker/flag-blue.svg"
+import flagGreen from "@/assets/sticker/flag-green.svg"
 
-import circleBlue from '@/common/elemets/circle-blue.svg'
-import circleRed from '@/common/elemets/circle-red.svg'
-import circleGreen from '@/common/elemets/circle-green.svg'
+import circleBlue from '@/assets/sticker/circle-blue.svg'
+import circleRed from '@/assets/sticker/circle-red.svg'
+import circleGreen from '@/assets/sticker/circle-green.svg'
 
 export function Section1() {
     const navigate = useNavigate();

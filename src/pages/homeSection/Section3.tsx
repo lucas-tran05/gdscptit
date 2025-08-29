@@ -4,10 +4,10 @@ import img2 from '@/assets/home/section3/img-2-s3-min.png'
 import img3 from '@/assets/home/section3/img-3-s3-min.png'
 import img4 from '@/assets/home/section3/img-4-s3-min.png'
 
-import circleBlue from '@/common/elemets/circle-blue.svg'
-import circleRed from '@/common/elemets/circle-red.svg'
-import circleYellow from '@/common/elemets/circle-yellow.svg'
-import circleGreen from '@/common/elemets/circle-green.svg'
+import circleBlue from '@/assets/sticker/circle-blue.svg'
+import circleRed from '@/assets/sticker/circle-red.svg'
+import circleYellow from '@/assets/sticker/circle-yellow.svg'
+import circleGreen from '@/assets/sticker/circle-green.svg'
 
 export function Section3() {
   const contentItems = [
