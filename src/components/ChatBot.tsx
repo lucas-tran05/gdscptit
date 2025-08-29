@@ -38,7 +38,7 @@ export default function ChatBot({
     title = 'Chat Bot',
     initMessages = [{
         id: 1,
-        text: "Xin chào! Tôi là AI Chat Assistant. Tôi có thể giúp gì cho bạn hôm nay?",
+        text: "Xin chào! Tôi là GDG on Campus: PTIT chat bot. Tôi có thể giúp gì cho bạn?",
         isUser: false,
         timestamp: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })
     }],
@@ -117,7 +117,7 @@ export default function ChatBot({
                     <p className="text-sm opacity-80">{isTyping ? 'Đang trả lời...' : 'Trực tuyến'}</p>
                 </div>
                 <button onClick={clearMessages} className="p-2 hover:bg-gray-200 rounded-lg transition-colors" title="Xóa chat">
-                    <FaTrash className="w-5 h-5 cursor-pointer" />
+                    <FaTrash className="w-5 h-5 cursor-pointer text-gdsc-primary-red" />
                 </button>
             </div>
 

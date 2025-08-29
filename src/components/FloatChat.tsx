@@ -29,7 +29,6 @@ export default function FloatChat() {
                     transition={{ duration: 0.3 }}
                 >
                     <div className="flex justify-between items-center bg-blue-500 text-white p-2 rounded-t-lg">
-                        <h2 className="font-semibold text-sm">GDG Float Chat</h2>
                         <button onClick={() => setIsOpen(false)}>
                             <FaTimes />
                         </button>
