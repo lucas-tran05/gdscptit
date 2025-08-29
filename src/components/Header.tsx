@@ -1,5 +1,4 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Link as ScrollLink } from "react-scroll";
 import logo1 from "@/assets/logo-1.svg";
 import { FaArrowRight, FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
@@ -12,8 +11,8 @@ const Header = () => {
   const navItems = [
     { name: "Trang chủ", path: "/", type: "route" },
     { name: "Tuyển thành viên", path: "/form", type: "route" },
-    { name: "Chat bot hỏi đáp", path: "/chatbot", type: "route" }
-    // { name: "Giới thiệu", path: "about", type: "scroll" } // ví dụ scroll
+    { name: "Chat bot hỏi đáp", path: "/chatbot", type: "route" },
+    { name: "Fanpage", path: "https://www.facebook.com/gdsc.ptit", type: "external" }
   ];
 
   const linkClass = (active: boolean) =>
@@ -36,20 +35,21 @@ const Header = () => {
       );
     }
 
+    // External link
     return (
-      <ScrollLink
+      <a
         key={item.name}
-        to={item.path}
-        smooth={true}
-        duration={600}
-        offset={-80}
+        href={item.path}
+        target="_blank"
+        rel="noopener noreferrer"
         className={linkClass(false)}
         onClick={() => isMobile && setIsOpen(false)}
       >
         {item.name}
-      </ScrollLink>
+      </a>
     );
   };
+
 
   return (
     <>
@@ -110,7 +110,7 @@ const Header = () => {
         )}
       </header>
     </>
-  
+
   );
 };
 
