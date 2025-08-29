@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { FaUser, FaTrash, FaPaperPlane } from 'react-icons/fa';
 import GDSCLogo from '@/assets/chatbot/gdsc-logo.png';
+import { askChat } from '@/services/chatService';
 
 export type Message = {
     id: number;
@@ -80,9 +81,8 @@ export default function ChatBot({
         setIsTyping(true);
 
         try {
-            const botResponse = await new Promise<string>(resolve =>
-                setTimeout(() => resolve("Đang xử lý..."), 1000)
-            );
+            const botResponse = await askChat({ message: userMessage.text });
+
 
             const botMessage: Message = {
                 id: Date.now() + 1,
@@ -94,6 +94,15 @@ export default function ChatBot({
             setMessages(prev => [...prev, botMessage]);
         } catch (err) {
             console.error(err);
+
+            const errorMessage: Message = {
+                id: Date.now() + 1,
+                text: "Xin lỗi, đã có lỗi xảy ra. Bạn thử lại sau nhé.",
+                isUser: false,
+                timestamp: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })
+            };
+
+            setMessages(prev => [...prev, errorMessage]);
         } finally {
             setIsTyping(false);
         }
@@ -188,7 +197,6 @@ export default function ChatBot({
                     ))}
                 </div>
             )}
-
         </div>
     );
 }
