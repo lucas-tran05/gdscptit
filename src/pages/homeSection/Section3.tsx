@@ -112,6 +112,7 @@ export function Section3() {
                     transition={{ duration: 0.3 }}
                   >
                     <img
+                      draggable="false"
                       loading="lazy"
                       src={item.img}
                       alt={item.title}
@@ -127,6 +128,7 @@ export function Section3() {
                     transition={{ duration: 0.3 }}
                   >
                     <img
+                      draggable="false"
                       loading="lazy"
                       src={item.img}
                       alt={item.title}

@@ -67,8 +67,8 @@ export function Section1() {
                 <img
                     src={cover}
                     alt="Cover"
-                    loading="lazy"
                     className="absolute inset-0 object-cover w-full h-full"
+                    draggable="false"
                 />
 
                 {/* Overlay trắng gradient */}
@@ -134,6 +134,7 @@ export function Section1() {
                             >
                                 <div className="flex items-center justify-center gap-4">
                                     <img
+                                        draggable="false"
                                         src={item.img}
                                         alt={`Flag ${item.color}`}
                                         className="w-24 object-cover"
@@ -211,6 +212,7 @@ export function Section1() {
                                     {/* Image Circle */}
                                     <div className="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden">
                                         <img
+                                            draggable="false"
                                             src={item.img}
                                             alt={`Flag ${item.color}`}
                                             className="w-10 h-10 object-contain"

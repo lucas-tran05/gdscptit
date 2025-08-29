@@ -86,6 +86,7 @@ export function Section2() {
                         transition={{ duration: 0.8 }}
                     >
                         <img
+                            draggable="false"
                             loading="lazy"
                             src={image}
                             alt="GDSC PTIT Team Photo"
