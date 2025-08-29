@@ -83,7 +83,7 @@ export function Section1() {
                                     loading="lazy"
                                     src={testimonial.image}
                                     alt={testimonial.name}
-                                    className="w-[120px] h-[120px] md:w-[250px] md:h-[250px] rounded-full md:mr-4 mb-4 md:mb-0 object-cover"
+                                    className="w-[200px] h-[200px] md:w-[250px] md:h-[250px] rounded-full md:mr-4 mb-4 md:mb-0 object-cover"
 
                                 />
 
