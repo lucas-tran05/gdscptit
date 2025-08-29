@@ -14,7 +14,7 @@ import img3 from "@/assets/home/section2/3.webp"
 export function Section2() {
   return (
     <section className="relative flex items-center justify-center px-4 py-8 overflow-hidden">
-      <div className="max-w-5xl mx-auto text-center relative z-10 mt-6 md:mt-24">
+      <div className="max-w-5xl mx-auto text-center relative z-10 mt-6 md:mt-24 p-2">
         <div className="flex flex-col lg:flex-row items-center justify-start gap-6 lg:gap-8 mb-6 lg:mb-8">
           {/* Text bên trái */}
           <motion.div
@@ -154,14 +154,14 @@ export function Section2() {
       <motion.img
         src={com1}
         alt="Community 1"
-        className="absolute bottom-0 left-0 md:left-20 w-40 h-40 sm:w-60 sm:h-60 lg:w-72 lg:h-72 -rotate-12"
+        className="absolute bottom-0 right-0 md:right-20 w-40 h-40 sm:w-60 sm:h-60 lg:w-72 lg:h-72 rotate-12"
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.img
         src={com2}
         alt="Community 2"
-        className="absolute top-10 right-0 md:right-20 w-32 h-32 sm:w-44 sm:h-44 lg:w-52 lg:h-52"
+        className="absolute top-20 -left-10 md:left-20 w-32 h-32 sm:w-56 sm:h-56 lg:w-62 lg:h-62 -rotate-12"
         animate={{ y: [0, 20, 0] }}
         transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
       />

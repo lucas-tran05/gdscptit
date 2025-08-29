@@ -48,7 +48,14 @@ export default function ChatBot({
     placeholder = 'Nhập tin nhắn của bạn...',
     height = '400px'
 }: ChatBotProps) {
-    const [messages, setMessages] = useState<Message[]>(initMessages);
+    const STORAGE_KEY = "gdsc-chat-messages";
+
+    // Load từ localStorage trước
+    const [messages, setMessages] = useState<Message[]>(() => {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        return saved ? JSON.parse(saved) : initMessages;
+    });
+
     const [inputText, setInputText] = useState('');
     const [isTyping, setIsTyping] = useState(false);
 
@@ -66,6 +73,11 @@ export default function ChatBot({
         return () => clearTimeout(timer);
     }, [messages, isTyping]);
 
+    // Cứ khi messages thay đổi thì lưu vào localStorage
+    useEffect(() => {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+    }, [messages]);
+
     const handleSendMessage = async () => {
         if (!inputText.trim()) return;
 
@@ -82,7 +94,6 @@ export default function ChatBot({
 
         try {
             const botResponse = await askChat({ message: userMessage.text });
-
 
             const botMessage: Message = {
                 id: Date.now() + 1,
@@ -115,7 +126,10 @@ export default function ChatBot({
         }
     };
 
-    const clearMessages = () => setMessages(initMessages);
+    const clearMessages = () => {
+        setMessages(initMessages);
+        localStorage.removeItem(STORAGE_KEY); // xoá cả localStorage
+    };
 
     return (
         <div className="flex flex-col bg-white rounded-lg shadow-lg" style={{ height }}>
