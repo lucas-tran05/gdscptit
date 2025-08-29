@@ -6,16 +6,16 @@ export default function NotFound() {
   const navigate = useNavigate()
 
   return (
-    <main className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden">
+    <main className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden p-6">
       {/* Background blobs */}
       <motion.div
-        className="absolute top-20 left-20 w-72 h-72 bg-gdsc-primary-red/30 rounded-full blur-3xl"
+        className="absolute top-20 left-20 w-72 h-72 bg-red-100 rounded-full blur-3xl"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
       />
       <motion.div
-        className="absolute bottom-20 right-20 w-72 h-72 bg-gdsc-primary-green/30 rounded-full blur-3xl"
+        className="absolute bottom-20 right-20 w-72 h-72 bg-green-100 rounded-full blur-3xl"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
@@ -26,7 +26,7 @@ export default function NotFound() {
         <motion.img
           src={GDSCIcon}
           alt="GDSC Logo"
-          className="w-120 h-auto mx-auto drop-shadow-lg"
+          className="w-70 md:w-120 h-auto mx-auto drop-shadow-lg"
           initial={{ scale: 0, rotate: -45, opacity: 0 }}
           animate={{ scale: 1, rotate: 0, opacity: 1 }}
           transition={{ type: "spring", stiffness: 120, damping: 12 }}
@@ -34,7 +34,7 @@ export default function NotFound() {
 
         {/* Big 404 */}
         <motion.h1
-          className="text-6xl font-extrabold tracking-tight sm:text-9xl flex justify-center gap-2"
+          className="font-extrabold tracking-tight text-9xl flex justify-center gap-2"
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -42,21 +42,21 @@ export default function NotFound() {
           <motion.span
             className="text-gdsc-primary-yellow drop-shadow-md"
             animate={{ y: [0, -10, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
+            transition={{ repeat: Infinity, duration: 1 }}
           >
             4
           </motion.span>
           <motion.span
             className="text-gdsc-primary-red drop-shadow-md"
             animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2, delay: 0.2 }}
+            transition={{ repeat: Infinity, duration: 1, delay: 0.2 }}
           >
             0
           </motion.span>
           <motion.span
             className="text-gdsc-primary-green drop-shadow-md"
             animate={{ y: [0, -10, 0] }}
-            transition={{ repeat: Infinity, duration: 2, delay: 0.4 }}
+            transition={{ repeat: Infinity, duration: 1, delay: 0.4 }}
           >
             4
           </motion.span>
@@ -79,7 +79,7 @@ export default function NotFound() {
 
         {/* Actions */}
         <motion.div
-          className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3"
+          className="mt-8 flex flex-row items-center justify-center gap-3"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
