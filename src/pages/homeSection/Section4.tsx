@@ -60,7 +60,8 @@ export function Section4() {
                     modules={[Navigation, Autoplay, Pagination]}
                     spaceBetween={30}
                     slidesPerView={1}
-                    autoplay={{ delay: 3000 }}
+                    autoplay={{ delay: 10000 }}
+                    pagination={{ clickable: true }}
                     loop={true}
                     breakpoints={{
                         640: { slidesPerView: 1 },

@@ -12,7 +12,6 @@ export default function Home() {
       <Footer />
       <ScrollToTop />
       <FloatChat />
-
     </>
   )
 }

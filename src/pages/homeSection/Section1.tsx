@@ -159,11 +159,11 @@ export function Section1() {
                     </div>
                 </div>
             </motion.section>
-
+            {/* Mobile Timeline - Vertical */}
             <div className="md:hidden w-full py-12 relative">
                 <motion.img
-                    src={circleBlue}
-                    alt="blue circle"
+                    src={circleGreen}
+                    alt="green circle"
                     className="absolute top-16 left-8 w-38 h-38 opacity-70"
                     animate={{ rotate: 360 }}
                     transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -177,8 +177,8 @@ export function Section1() {
                 />
 
                 <motion.img
-                    src={circleGreen}
-                    alt="green circle"
+                    src={circleBlue}
+                    alt="blue circle"
                     className="absolute bottom-0 left-0 w-30 h-30 opacity-70"
                     animate={{ rotate: 360 }}
                     transition={{ duration: 20, repeat: Infinity, ease: "linear" }}

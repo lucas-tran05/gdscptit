@@ -127,10 +127,7 @@ export function Section2() {
                 Về Google Developer Groups
               </h2>
               <p className="text-gray-600 text-base sm:text-lg md:text-xl leading-relaxed text-justify">
-                Google Developer Student Clubs (GDSC viết tắt) là chương trình
-                được Google cấp quyền tổ chức và hỗ trợ, dành cho sinh viên có
-                niềm yêu thích CNTT nói chung và công nghệ Google nói riêng. Năm
-                2023, đã có hơn 1500 GDSC Lead tại hơn 100 quốc gia.
+                Google Developer Student Clubs (GDSC viết tắt) là chương trình được Google cấp quyền tổ chức và hỗ trợ, dành cho sinh viên đam mê CNTT và công nghệ Google. Năm 2024, đã có hơn 2000 chi nhánh tại hơn 100 quốc gia.
               </p>
             </div>
             <div className="flex-1">
@@ -138,12 +135,7 @@ export function Section2() {
                 Về GDG on Campus PTIT
               </h2>
               <p className="text-gray-600 text-base sm:text-lg md:text-xl leading-relaxed text-justify">
-                Tháng 9/2022, GDSC-PTIT chính thức ra đời, là một chapter của
-                GDSC tại Học viện Công nghệ Bưu chính Viễn thông. Đây là môi
-                trường bổ ích để các thành viên có thể học tập và phát triển bản
-                thân từ nguồn tài nguyên của Google, cùng nhau thực hiện sứ mệnh
-                đem đến những giải pháp mang lại thay đổi tích cực cho địa
-                phương và cộng đồng.
+                Tháng 9/2022, GDSC-PTIT chính thức ra đời, là một chapter của GDSC tại Học viện Công nghệ Bưu chính Viễn thông. Đây là môi trường lý tưởng để sinh viên tiếp cận tài nguyên Google, học hỏi và phát triển bản thân, cùng nhau tạo ra những giải pháp công nghệ mang lại giá trị tích cực cho cộng đồng.
               </p>
             </div>
           </div>
