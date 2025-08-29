@@ -6,11 +6,11 @@ import "swiper/css/pagination"
 
 import pointer from "@/assets/form/Section1/6.png"
 
-import des_NguyenTruongLam from "@/assets/home/camnhan/Des_ NguyenTruongLam.jpg"
-import hrlg_NguyenQuangMinh from "@/assets/home/camnhan/HRLG_ NguyenQuangMinh.jpg"
-import tech_MinhQuan from "@/assets/home/camnhan/Tech_ MinhQuan.jpg"
-import tech_NguyenVanThang from "@/assets/home/camnhan/Tech_ NguyenVanThang.jpg"
-import pr_GiaLinh from "@/assets/home/camnhan/PR_ GiaLinh.jpg"
+import des_NguyenTruongLam from "@/assets/home/camnhan/Des_NguyenTruongLam.jpg"
+import hrlg_NguyenQuangMinh from "@/assets/home/camnhan/HRLG_NguyenQuangMinh.jpg"
+import tech_MinhQuan from "@/assets/home/camnhan/Tech_MinhQuan.jpg"
+import tech_NguyenVanThang from "@/assets/home/camnhan/Tech_NguyenVanThang.jpg"
+import pr_GiaLinh from "@/assets/home/camnhan/PR_GiaLinh.jpg"
 
 export function Section1() {
     const testimonials = [
