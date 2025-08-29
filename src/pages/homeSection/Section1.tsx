@@ -34,7 +34,7 @@ export function Section1() {
     const timelineData = [
         {
             img: flagGreen,
-            date: "04/09 - 11/09",
+            date: "01/09 - 11/09",
             text: "Vòng Đơn",
             color: "green" as Color,
             rotation: 10

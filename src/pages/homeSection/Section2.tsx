@@ -99,7 +99,7 @@ export function Section2() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
                 >
-                    <div className="flex flex-col lg:flex-row items-start gap-8 md:gap-24 px-8">
+                    <div className="flex flex-col lg:flex-row items-start gap-8 md:gap-24 px-2 md:px-8">
                         <div className="flex-8/12">
                             <h2 className="font-bold text-2xl mb-2 text-gdsc-primary-blue">Về Google Developer Groups</h2>
                             <p className="text-gray-600 text-lg md:text-xl leading-relaxed text-justify">

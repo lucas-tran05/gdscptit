@@ -46,7 +46,7 @@ export default function FloatChat() {
             {!isOpen && (
                 <motion.button
                     onClick={() => setIsOpen(true)}
-                    className="bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors"
+                    className="bg-blue-500 text-white p-3 rounded-full shadow-xl hover:bg-blue-600 transition-colors border-2 border-white"
                     title="Mở chat"
                     variants={buttonVariants}
                     initial="hidden"

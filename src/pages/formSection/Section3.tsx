@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import questionsData from "@/data/question.json"
+import majorsData from "@/data/majors.json"
 import { motion } from "framer-motion";
 import type { FormData } from "@/types/form";
 import { useNotification } from "@/components/Notification";
@@ -234,6 +235,7 @@ export function Section3() {
     };
 
     const questions = questionsData.questions;
+    const majors = majorsData;
     const getFieldError = (fieldName: string) => errors[fieldName];
     const hasFieldError = (fieldName: string) => !!errors[fieldName];
 
@@ -332,7 +334,6 @@ export function Section3() {
                         >
                             <option value="Nam">Nam</option>
                             <option value="Nữ">Nữ</option>
-                            <option value="Khác">Khác</option>
                         </select>
                     </div>
 
@@ -428,15 +429,23 @@ export function Section3() {
                         <input
                             type="text"
                             name="majors"
+                            list="majors-list"
                             value={formData.information.majors}
                             onChange={handleInfoChange}
-                            className={`w-full border rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all ${hasFieldError("majors") ? "border-red-500" : "border-gray-300"
+                            placeholder="Gõ để tìm chuyên ngành..."
+                            className={`w-full border rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all placeholder-gray-400 ${hasFieldError("majors") ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-gray-300"
                                 }`}
                         />
+                        <datalist id="majors-list">
+                            {majors.map((m) => (
+                                <option key={m.ma_nganh} value={m.ten_nganh} />
+                            ))}
+                        </datalist>
                         {getFieldError("majors") && (
                             <p className="text-red-500 text-xs">{getFieldError("majors")}</p>
                         )}
                     </div>
+
 
                     <div className="space-y-2">
                         <label className="block text-sm font-medium text-gray-700">
