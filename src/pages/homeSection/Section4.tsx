@@ -55,13 +55,11 @@ export function Section4() {
         <section className="relative flex items-center justify-center px-4 py-12">
             <div className="w-full mx-auto text-center">
                 <h1 className="text-3xl md:text-4xl font-bold mb-6 text-gdsc-primary-blue">Chia sẻ từ thành viên CLB</h1>
-                <img src={pointer} loading="lazy" alt="Pointer" className="absolute z-50 top-20 md:top-10 -right-14 lg:right-52  w-36 h-36" />
+                <img src={pointer} loading="lazy" alt="Pointer" className="absolute z-50 top-20 md:top-10 -right-14 lg:right-52 w-36 h-36" />
                 <Swiper
                     modules={[Navigation, Autoplay, Pagination]}
                     spaceBetween={30}
                     slidesPerView={1}
-                    // navigation
-                    // pagination={{ clickable: true }}
                     autoplay={{ delay: 3000 }}
                     breakpoints={{
                         640: { slidesPerView: 1 },
@@ -70,30 +68,26 @@ export function Section4() {
                     className="relative overflow-visible"
                 >
                     {testimonials.map((testimonial) => (
-                        <SwiperSlide key={testimonial.id}>
-                            <div className="flex flex-col md:flex-row items-center md:items-start p-12 transition mb-6 gap-12 max-w-6xl mx-auto border-3 border-gdsc-primary-blue rounded-4xl">
+                        <SwiperSlide key={testimonial.id} className="flex">
+                            <div className="flex flex-col md:flex-row items-center md:items-start p-6 md:p-12 mb-6 gap-12 max-w-6xl mx-auto border-3 border-gdsc-primary-blue rounded-4xl min-h-[700px] md:min-h-[200px] w-full">
                                 {/* Text */}
-                                <div className="text-center md:text-left h-full flex flex-col justify-between">
-                                    <p className="text-lg text-gray-500 mb-2">{testimonial.role}</p>
-                                    <p className="text-gray-600 italic text-justify">"{testimonial.comment}"</p>
-                                    <h3 className="text-xl font-bold mb-1 text-gdsc-primary-blue mt-6">{testimonial.name}</h3>
+                                <div className="flex flex-col justify-between text-center md:text-left h-full flex-1">
+                                    <p className="text-lg text-gdsc-primary-yellow mb-2">{testimonial.role}</p>
+                                    <p className="text-gray-600 italic text-justify flex-1">"{testimonial.comment}"</p>
+                                    <h3 className="text-xl font-bold mb-1 text-gdsc-primary-blue mt-4">{testimonial.name}</h3>
                                 </div>
                                 {/* Avatar */}
                                 <img
                                     loading="lazy"
                                     src={testimonial.image}
                                     alt={testimonial.name}
-                                    className="w-[200px] h-[200px] md:w-[250px] md:h-[250px] rounded-full md:mr-4 mb-4 md:mb-0 object-cover"
-
+                                    className="w-[220px] h-[220px] md:w-[250px] md:h-[250px] rounded-full md:mr-4 mb-4 md:mb-0 object-cover"
                                 />
-
                             </div>
-
                         </SwiperSlide>
                     ))}
                 </Swiper>
             </div>
         </section>
-
     )
 }
