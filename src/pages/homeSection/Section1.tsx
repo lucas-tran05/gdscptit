@@ -8,6 +8,10 @@ import flagRed from "@/common/elemets/flag-red.svg"
 import flagBlue from "@/common/elemets/flag-blue.svg"
 import flagGreen from "@/common/elemets/flag-green.svg"
 
+import circleBlue from '@/common/elemets/circle-blue.svg'
+import circleRed from '@/common/elemets/circle-red.svg'
+import circleGreen from '@/common/elemets/circle-green.svg'
+
 export function Section1() {
     const navigate = useNavigate();
     type Color = "green" | "red" | "blue";
@@ -111,10 +115,10 @@ export function Section1() {
 
                         {/* Button */}
                         <button
-                            className="flex items-center font-bold gap-2 px-8 py-3 mt-6 text-gray-700 bg-white rounded-full border-2 cursor-pointer hover:border-gdsc-primary-blue hover:shadow-[0_0_20px_rgba(37,99,235,0.6)]"
+                            className="flex text-lg items-center font-bold gap-2 px-8 py-3 mt-6 text-gdsc-primary-blue bg-white rounded-full border-2 cursor-pointer border-gdsc-primary-blue hover:shadow-[0_0_20px_rgba(37,99,235,0.6)]"
                             onClick={() => navigate("/form")}
                         >
-                            Đăng kí ngay <FaArrowRight />
+                            ĐĂNG KÝ NGAY <FaArrowRight />
                         </button>
                     </div>
                 </div>
@@ -155,63 +159,79 @@ export function Section1() {
                 </div>
             </motion.section>
 
-            {/* Mobile Timeline - Separate section outside background */}
-            <div className="md:hidden w-full py-8 ">
+            <div className="md:hidden w-full py-12 relative">
+                <motion.img
+                    src={circleBlue}
+                    alt="blue circle"
+                    className="absolute top-16 left-8 w-38 h-38 opacity-70"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                />
+                <motion.img
+                    src={circleRed}
+                    alt="red circle"
+                    className="absolute top-82 right-12 w-24 h-24 opacity-60"
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+                />
+
+                <motion.img
+                    src={circleGreen}
+                    alt="green circle"
+                    className="absolute bottom-0 left-0 w-30 h-30 opacity-70"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                />
+                {/* Vertical Line */}
+                <div className="absolute top-30 left-1/2 transform -translate-x-1/2 h-100 w-1 bg-gray-200"></div>
+
                 <div className="container mx-auto px-4">
-                    <h1 className="text-4xl font-bold mb-6 text-gdsc-primary-red text-center">Timeline</h1>
-                    <div className="flex flex-col items-center justify-center space-y-4 max-w-md mx-auto">
+                    <h1 className="text-4xl font-bold mb-10 text-gdsc-primary-red text-center">
+                        Timeline
+                    </h1>
+
+                    <div className="flex flex-col space-y-10 max-w-md mx-auto">
                         {timelineData.map((item, idx) => (
                             <motion.div
                                 key={idx}
-                                className="w-full group cursor-pointer"
-                                whileHover={{ scale: 1.02 }}
-                                initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
-                                animate={{ opacity: 1, x: 0 }}
+                                initial={{ opacity: 0, y: 50 }}
+                                animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: idx * 0.2 }}
+                                whileHover={{ scale: 1.03 }}
+                                className={`relative flex items-center ${idx % 2 === 0 ? "justify-start" : "justify-end"
+                                    }`}
                             >
-                                {idx % 2 == 0 ? <div className="flex items-center gap-4 rounded-2xl p-4">
-                                    <img
-                                        src={item.img}
-                                        alt={`Flag ${item.color}`}
-                                        className="w-14 h-14 object-cover flex-shrink-0"
-                                    />
-                                    <div className="flex flex-col items-start justify-center flex-1">
-                                        <p className={`${colorClasses[item.color].text} font-bold text-lg mb-1`}>
+                                {/* Connector dot */}
+                                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-white border-4 border-gdsc-primary-red z-10"></div>
+
+                                <div
+                                    className={`bg-white shadow-lg rounded-2xl p-5 w-5/6 flex items-center gap-4 ${idx % 2 === 0 ? "ml-6" : "mr-6 flex-row-reverse"
+                                        }`}
+                                >
+                                    {/* Image Circle */}
+                                    <div className="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden">
+                                        <img
+                                            src={item.img}
+                                            alt={`Flag ${item.color}`}
+                                            className="w-10 h-10 object-contain"
+                                        />
+                                    </div>
+
+                                    {/* Content */}
+                                    <div className="flex flex-col flex-1">
+                                        <span
+                                            className={`text-sm font-semibold mb-2 px-2 py-1 rounded-full inline-block ${colorClasses[item.color].text}`}
+                                        >
                                             {item.date}
-                                        </p>
+                                        </span>
                                         <motion.p
-                                            className={`text-base font-bold px-4 py-2 
-                                            ${colorClasses[item.color].text} ${colorClasses[item.color].border} 
-                                            rounded-xl w-full text-center`}
-                                            whileHover={{ rotate: item.rotation / 3 }}
-                                            transition={{ type: "spring", stiffness: 200 }}
+                                            className={`text-base font-bold text-center border rounded-3xl py-2 bg-${item.color}-100 ${colorClasses[item.color].text} ${colorClasses[item.color].border}`}
+                                            whileHover={{ rotate: item.rotation / 5 }}
                                         >
                                             {item.text}
                                         </motion.p>
                                     </div>
-                                </div> : <div className="flex items-center gap-4 rounded-2xl p-4">
-                                    <div className="flex flex-col items-start justify-center flex-1">
-                                        <p className={`${colorClasses[item.color].text} font-bold text-lg mb-1`}>
-                                            {item.date}
-                                        </p>
-                                        <motion.p
-                                            className={`text-base font-bold px-4 py-2 
-                                                ${colorClasses[item.color].text} ${colorClasses[item.color].border} 
-                                                rounded-xl w-full text-center`}
-                                            whileHover={{ rotate: item.rotation / 3 }}
-                                            transition={{ type: "spring", stiffness: 200 }}
-                                        >
-                                            {item.text}
-                                        </motion.p>
-                                    </div>
-                                    <img
-                                        src={item.img}
-                                        alt={`Flag ${item.color}`}
-                                        className="w-14 h-14 object-cover flex-shrink-0"
-                                    />
-                                </div>}
-
-
+                                </div>
                             </motion.div>
                         ))}
                     </div>

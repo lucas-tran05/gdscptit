@@ -21,7 +21,9 @@ const Footer = () => {
           {/* Left Section - Logo and Title */}
           <div className="flex-1">
             <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-3">
-              <GDSCIcon width={40} height={40} color="#fff"/>
+              <div className='flex justify-center'>
+                <GDSCIcon width={40} height={40} color="#fff" />
+              </div>
               <div>
                 <h3 className="text-xl md:text-2xl font-semibold text-center sm:text-left">
                   Google Developers Student Clubs

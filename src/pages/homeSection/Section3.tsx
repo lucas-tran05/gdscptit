@@ -98,7 +98,7 @@ export function Section3() {
               {isEven ? (
                 <>
                   <div className="flex-1 flex flex-col items-start order-2 lg:order-1">
-                    <h1 className="text-5xl font-bold text-gray-800 mb-6">
+                    <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
                       {item.title.split(" ")[0]}{" "}
                       <span className={item.color}>{item.title.split(" ")[1]}</span>
                     </h1>
@@ -134,7 +134,7 @@ export function Section3() {
                     />
                   </motion.div>
                   <div className="flex-1 flex flex-col items-start order-2 lg:order-2">
-                    <h1 className="text-5xl font-bold text-gray-800 mb-6">
+                    <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
                       {item.title.split(" ")[0]}{" "}
                       <span className={item.color}>{item.title.split(" ")[1]}</span>
                     </h1>

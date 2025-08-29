@@ -33,9 +33,9 @@ export function Section1() {
     ]
 
     return (
-        <section className="relative flex items-center justify-center px-4 py-12  mt-16">
+        <section className="relative flex items-center justify-center px-4 py-12">
             <div className="w-full mx-auto text-center">
-                <h1 className="text-4xl font-bold mb-6 text-gdsc-primary-blue">Chia sẻ từ thành viên CLB</h1>
+                <h1 className="text-3xl md:text-4xl font-bold mb-6 text-gdsc-primary-blue">Chia sẻ từ thành viên CLB</h1>
                 <img src={pointer} loading="lazy" alt="Pointer" className="absolute z-50 top-20 md:top-10 -right-14 lg:right-52  w-36 h-36" />
                 <Swiper
                     modules={[Navigation, Autoplay, Pagination]}

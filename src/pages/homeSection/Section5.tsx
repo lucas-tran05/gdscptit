@@ -35,11 +35,11 @@ export function Section5() {
   return (
   <div className="relative max-w-7xl mx-auto p-6 bg-white">
     {/* Header */}
-    <div className="relative text-center mb-8 z-10">
-      <h1 className="text-xl md:text-4xl font-bold text-red-500 mb-6">
-        Đăng kí ngay để trở thành 1 thành viên của
+    <div className="relative text-center mb-8 z-60">
+      <h1 className="text-3xl md:text-4xl font-bold text-gdsc-primary-red mb-6">
+        Trở thành 1 thành viên của
         <br />
-        GDG on Campus: PTIT
+        GDG on Campus: PTIT ngay!
       </h1>
 
       {/* Category Buttons */}
@@ -117,7 +117,7 @@ export function Section5() {
     {/* Registration Button */}
     <div className="relative text-center z-10">
       <motion.button
-        className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl cursor-pointer text-lg md:text-xl"
+        className="bg-gdsc-primary-blue hover:shadow-[0_0_20px_rgba(37,99,235,0.6)] text-white font-semibold py-3 px-8 rounded-full transition-colors duration-300 shadow-lg cursor-pointer text-lg md:text-xl"
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => navigate("/form")}
@@ -137,7 +137,7 @@ export function Section5() {
     <motion.img
       src={com2}
       alt="Community 2"
-      className="absolute top-0 right-0 w-40 md:w-52 z-50"
+      className="absolute top-0 -right-10 md:right-0 w-40 md:w-52 z-50"
       animate={{ y: [0, 20, 0] }}
       transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
     />

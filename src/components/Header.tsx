@@ -75,7 +75,7 @@ const Header = () => {
         {/* Actions (desktop) */}
         <div className="hidden md:block">
           <button
-            className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary-blue text-white hover:bg-gdsc-primary-blue/80"
+            className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary-blue text-white hover:bg-gdsc-primary-blue/80 cursor-pointer"
             onClick={() => navigate("/form")}
           >
             Đăng ký ngay
@@ -97,7 +97,7 @@ const Header = () => {
             {navItems.map((item) => renderNavItem(item, true))}
 
             <button
-              className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary-blue text-white hover:bg-gdsc-primary-blue/80"
+              className="flex items-center gap-2 px-5 py-3 rounded-xl bg-gdsc-primary-blue text-white hover:bg-gdsc-primary-blue/80 cursor-pointer"
               onClick={() => {
                 navigate("/form");
                 setIsOpen(false);
