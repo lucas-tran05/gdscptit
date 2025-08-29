@@ -122,7 +122,7 @@ export function Section2() {
           transition={{ duration: 1 }}
         >
           <div className="flex flex-col lg:flex-row items-start gap-6 md:gap-12 px-2 md:px-8">
-            <div className="flex-1">
+            <div className="flex-8/12">
               <h2 className="font-bold text-xl sm:text-2xl mb-2 text-gdsc-primary-blue">
                 Về Google Developer Groups
               </h2>
@@ -130,7 +130,7 @@ export function Section2() {
                 Google Developer Student Clubs (GDSC viết tắt) là chương trình được Google cấp quyền tổ chức và hỗ trợ, dành cho sinh viên đam mê CNTT và công nghệ Google. Năm 2024, đã có hơn 2000 chi nhánh tại hơn 100 quốc gia.
               </p>
             </div>
-            <div className="flex-1">
+            <div className="flex-10/12">
               <h2 className="font-bold text-xl sm:text-2xl mb-2 text-gdsc-primary-blue">
                 Về GDG on Campus PTIT
               </h2>
