@@ -149,7 +149,7 @@ export function Section3() {
                               alt={`${item.title} image ${idx + 1}`}
                               className="w-full h-full object-cover rounded-2xl"
                               draggable="false"
-                              loading="lazy"
+                              // loading="lazy"
                             />
                           </SwiperSlide>
                         ))}
@@ -182,7 +182,7 @@ export function Section3() {
                               alt={`${item.title} image ${idx + 1}`}
                               className="w-full h-full object-cover rounded-2xl"
                               draggable="false"
-                              loading="lazy"
+                              // loading="lazy"
                             />
                           </SwiperSlide>
                         ))}
