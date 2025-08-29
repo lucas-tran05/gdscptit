@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
 import questionsData from "@/data/question.json"
+import { motion } from "framer-motion";
 import type { FormData } from "@/types/form";
 import { useNotification } from "@/components/Notification";
 import { submitForm } from "@/services/formService";
 import SuccessPopup from "@/components/SuccessPopup";
+
+import circleBlue from '@/common/elemets/circle-blue.svg'
+import circleRed from '@/common/elemets/circle-red.svg'
+import circleYellow from '@/common/elemets/circle-yellow.svg'
+import circleGreen from '@/common/elemets/circle-green.svg'
 
 interface ValidationErrors {
     [key: string]: string;
@@ -232,14 +238,52 @@ export function Section3() {
     const hasFieldError = (fieldName: string) => !!errors[fieldName];
 
     return (
-        <div className="py-8 px-4">
+        <div className="relative py-8 px-4">
             <div>
                 <h1 className="text-3xl font-bold text-center text-gdsc-primary-blue mb-4">
                     Đăng Ký Thành Viên
                 </h1>
             </div>
-            <div className="max-w-6xl mx-auto border-2 border-blue-500 p-8 rounded-2xl shadow-lg space-y-8">
+            {/* Background decorative circles */}
+            <div className="absolute inset-0 -z-10 overflow-hidden">
+                <motion.img
+                    src={circleBlue}
+                    alt="blue circle"
+                    className="absolute top-16 left-8 w-40 h-40 opacity-70"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                />
+                <motion.img
+                    src={circleRed}
+                    alt="red circle"
+                    className="absolute top-82 right-12 w-24 h-24 opacity-60"
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+                />
 
+                <motion.img
+                    src={circleGreen}
+                    alt="green circle"
+                    className="absolute top-176 left-38 w-20 h-20 opacity-70"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                />
+                <motion.img
+                    src={circleYellow}
+                    alt="yellow circle"
+                    className="absolute bottom-92 left-28 w-16 h-16 opacity-50"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                />
+                <motion.img
+                    src={circleGreen}
+                    alt="green circle"
+                    className="absolute bottom-16 right-40 w-32 h-32 opacity-65"
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+                />
+            </div>
+            <div className="max-w-6xl mx-auto border-2 border-blue-500 p-8 rounded-2xl shadow-lg space-y-8 bg-white">
                 {/* Personal Information Section */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">

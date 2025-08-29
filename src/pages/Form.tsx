@@ -4,6 +4,7 @@ import Footer from "@/components/Footer"
 // import { Section2 } from "./formSection/Section2"
 import { Section3 } from "./formSection/Section3"
 import { ScrollToTop } from "@/components/ScrollToTop";
+import FloatChat from '@/components/FloatChat';
 
 export default function Home() {
   return (
@@ -14,6 +15,8 @@ export default function Home() {
       <Section3 />
       <Footer />
       <ScrollToTop />
+      <FloatChat />
+
     </>
   )
 }

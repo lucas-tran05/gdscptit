@@ -6,6 +6,7 @@ import { Section3 } from "@/pages/homeSection/Section3"
 // import { Section4 } from "@/pages/homeSection/Section4"
 import { Section5 } from "@/pages/homeSection/Section5"
 import { ScrollToTop } from "@/components/ScrollToTop";
+import FloatChat from '@/components/FloatChat';
 
 import { Section1 as Section1From } from "@/pages/formSection/Section1"
 
@@ -24,6 +25,8 @@ export default function Home() {
       <Section5 />
       <Footer />
       <ScrollToTop />
+      <FloatChat />
+
     </div>
   )
 }

@@ -9,7 +9,7 @@ const Footer = () => {
   ];
 
   const contactInfo = {
-    phone: "0869276128 (Ms.Thoa)",
+    phone: "0869276128",
     email: "contact@gdscptit.dev",
     domain: "gdscptit.dev"
   }
@@ -26,7 +26,7 @@ const Footer = () => {
               </div>
               <div>
                 <h3 className="text-xl md:text-2xl font-semibold text-center sm:text-left">
-                  Google Developers Student Clubs
+                  Google Developer Group - GDG on Campus
                 </h3>
                 <p className="text-blue-100 text-base md:text-lg text-center sm:text-left">
                   Posts and Telecommunications Institute of Technology
@@ -52,7 +52,7 @@ const Footer = () => {
               </div>
 
               <div className="text-xs md:text-sm text-blue-100 text-center sm:text-left">
-                Copyright Google Developer Student Club - PTIT.<br />
+                Copyright Google Developer Group - GDG on Campus: PTIT .<br />
                 All right reserved.
               </div>
             </div>
@@ -62,17 +62,17 @@ const Footer = () => {
           <div className="flex flex-col gap-4 text-base md:text-xl">
             <div className="flex items-center gap-3">
               <FaPhone className="w-4 h-4" />
-              <span>{contactInfo.phone}</span>
+              <a href={`tel:${contactInfo.phone}`}>{contactInfo.phone}  (Ms.Thoa)</a>
             </div>
 
             <div className="flex items-center gap-3">
               <FaEnvelope className="w-4 h-4" />
-              <span>{contactInfo.email}</span>
+              <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
             </div>
 
             <div className="flex items-center gap-3">
               <FaGlobe className="w-4 h-4" />
-              <span>{contactInfo.domain}</span>
+              <a href={`https://${contactInfo.domain}`} target="_blank" rel="noopener noreferrer">{contactInfo.domain}</a>
             </div>
           </div>
         </div>
